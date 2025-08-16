@@ -5,6 +5,7 @@ home.packages = with pkgs;[
  starship
  fuzzel
  polkit_gnome
+ nitch
  wlr-randr
  wtype
  swww
