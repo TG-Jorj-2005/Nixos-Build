@@ -116,7 +116,7 @@
     
      style = ''
       * {
-        border: 2px groove;
+        border: none;
         border-radius: 8;
         font-family: "JetBrainsMono Nerd Font";
         font-size: 12px;
