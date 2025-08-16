@@ -4,6 +4,7 @@
   imports = [ ./modules/sh.nix
               ./modules/hyprland.nix
 	      ./modules/git.nix
+	      ./modules/starship.nix
 	      ./modules/waybar.nix
 	      inputs.catppuccin.homeManagerModules.catppuccin
 		       ];
