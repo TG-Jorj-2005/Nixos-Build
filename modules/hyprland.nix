@@ -6,6 +6,8 @@ home.packages = with pkgs;[
  polkit_gnome
  wlr-randr
  wtype
+ swww
+ ffmpeg
  wl-clipboard
  hyprland-protocols
  hyprpicker
