@@ -5,7 +5,12 @@
               ./modules/hyprland.nix
 	      ./modules/git.nix
 	      ./modules/waybar.nix
+	      inputs.catppuccin.homeManagerModules.catppuccin
 		       ];
+  catppucin = {
+   enable = true;
+   flavor = "mocha";
+  };
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jorj";
