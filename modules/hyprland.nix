@@ -2,6 +2,7 @@
 {
 
 home.packages = with pkgs;[
+ starship
  fuzzel
  polkit_gnome
  wlr-randr
