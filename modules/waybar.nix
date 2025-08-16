@@ -74,8 +74,8 @@
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
-          format-plugged = " {capacity}%";
+          format-charging = " 󰂄 {capacity}%";
+          format-plugged = " 󰂄 {capacity}%";
           format-alt = "{icon} {time}";
           format-icons = ["" "" "" "" ""];
           tooltip-format = "{timeTo}, {capacity}%";
