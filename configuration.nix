@@ -138,7 +138,7 @@
   #   enableSSHSupport = true;
   # };
    #Theme
-   gtk= {
+   gtk = {
    enable = true;
    theme = {
      name = "Catppuccin-Mocha-Standard";
