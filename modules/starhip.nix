@@ -9,7 +9,7 @@
 
       format = ''
         [](surface0)\
-        $os\
+	$os\
         $username\
         [](bg:peach fg:surface0)\
         $directory\
