@@ -30,6 +30,7 @@
    jorj = home-manager.lib.homeManagerConfiguration {
      inherit pkgs;
      modules = [./home.nix];
+     specialArgs = {inherit inputs;};
 
      };
   };
