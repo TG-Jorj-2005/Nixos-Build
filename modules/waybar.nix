@@ -22,13 +22,19 @@
           all-outputs = true;
           format = "{icon}";
           format-icons = {
-            "1" = "";
-            "2" = "";
-            "3" = "";
-            "4" = "";
-            "5" = "";
-            default = "";
-          };
+            "1" = "💻";  # Terminal
+            "2" = "🌐";  # Browser
+            "3" = "⚡";  # Code/Development  
+            "4" = "📁";  # Files/Explorer
+            "5" = "🎵";  # Music/Media
+            "6" = "🎮";  # Games/Entertainment
+            "7" = "💬";  # Chat/Communication
+            "8" = "📺";  # Video/Streaming
+            "9" = "⚙️";  # Settings/System
+            "10" = "📦"; # Miscellaneous
+            default = "📋";
+            active = "🔥";
+            urgent = "🚨";          };
         };
         
         "wlr/taskbar" = {
