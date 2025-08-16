@@ -16,6 +16,7 @@ home.packages = with pkgs;[
  swaybg
  xdg-desktop-portal-hyprland
  wlsunset
+ pyprland
  pavucontrol
  pamixer
  grim
