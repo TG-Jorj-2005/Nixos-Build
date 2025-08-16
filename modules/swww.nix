@@ -4,7 +4,7 @@
     Unit = {
       Description = "swww wallpaper daemon";
       After = [ "hyprland-session.target" ];
- ];
+ 
     };
 
     Service = {
