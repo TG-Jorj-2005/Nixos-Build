@@ -77,7 +77,7 @@
     LC_NUMERIC = "ro_RO.UTF-8";
     LC_PAPER = "ro_RO.UTF-8";
     LC_TELEPHONE = "ro_RO.UTF-8";
-    LC_TIME = "ro_RO.UTF-8";
+    LC_TIME = "ro_R/O.UTF-8";
   };
 
   # Configure keymap in X11
@@ -107,6 +107,10 @@
      dunst
      flameshot
      starship
+     catppuccin-gtk
+     catppuccin-kvantum
+     catppuccin-cursors
+     papirus-icon-theme
      unzip
      git
      pyprland
@@ -133,7 +137,30 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+   #Theme
+   gtk= {
+   enable = true;
+   theme = {
+     name = "Catppuccin-Mocha-Standard";
+     package = pkgs.catppuccin-gtk;
+    };
+    iconTheme = {
+     name = "Papiruis-Dark";
+     package = pkgs.papirus-icon-theme;
+     };
+   };
 
+   qt = {
+   enable = true;
+   platformTheme = "gtk";
+   style = {
+     name = "gtk2";
+     };
+   };
+
+   home.SessionVariables = {
+     GTK THEME = "Catppuccin-Mocha-Standard-Blue-Dark";
+   };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
