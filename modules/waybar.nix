@@ -52,26 +52,31 @@
         };
         
         "network" = {
-          format-wifi = " {essid} ({signalStrength}%)";
-          format-ethernet = " {ipaddr}";
-          format-disconnected = "⚠ Disconnected";
-          tooltip-format = "{ifname}: {ipaddr}/{cidr}";
+          format-wifi = " 📶 {essid} ({signalStrength}%)";
+          format-ethernet = " 🌐 {ipaddr}";
+          format-disconnected = " 🔗 Disconnected";
+          tooltip-format = " 📊 {ifname}: {ipaddr}/{cidr}";
         };
         
         "pulseaudio" = {
           format = "{icon} {volume}%";
-          format-muted = " Muted";
+         format-bluetooth = "🎧 {icon} {volume}%";
+          format-bluetooth-muted = "🎧 🔇 Muted";
+          format-muted = "🔇 Muted";
+          format-source = "🎤 {volume}%";
+          format-source-muted = "🎤❌";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
+            headphone = "🎧";
+            hands-free = "📞";
+            headset = "🎧";
+            phone = "📱";
+            portable = "🔊";
+            car = "🚗";
+            default = ["🔈" "🔉" "🔊"];
           };
           on-click = "pavucontrol";
-        };
+          on-click-right = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+	  };
         
         "battery" = {
           interval = 10;
@@ -88,8 +93,8 @@
         };
         
         "clock" = {
-          format = " {:%H:%M}";
-          format-alt = " {:%Y-%m-%d %H:%M:%S}";
+          format = " 🕐 {:%H:%M}";
+          format-alt = " 📅 {:%Y-%m-%d %H:%M:%S}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
