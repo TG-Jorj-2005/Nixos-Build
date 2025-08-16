@@ -113,7 +113,7 @@
       }
 
       window#waybar {
-        background-color: rgba(43, 48, 59, 0.95);
+        background-color:transparent;
         border-radius: 10px;
         color: #ffffff;
         transition-property: background-color;
