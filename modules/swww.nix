@@ -3,7 +3,8 @@
   systemd.user.services.swww = {
     Unit = {
       Description = "swww wallpaper daemon";
-      After = [ "graphical-session.target" ];
+      After = [ "hyprland-session.target" ];
+ ];
     };
 
     Service = {
