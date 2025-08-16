@@ -165,7 +165,7 @@
         color: #cdd6f4; 
       }
       #taskbar {
-       padding: 0 7px;
+       padding: 0 4px;
         margin: 0 3px;
         background-color: #313244; 
         border-radius: 8px;
