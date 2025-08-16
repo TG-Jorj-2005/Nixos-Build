@@ -1,8 +1,8 @@
 {config, lib, pkgs, ...}:
 {
+  catppuccin.waybar.enable = true;
   programs.waybar = { 
     enable = true;
-    catppuccin.enable = true;
     settings = {
       mainBar = {
         layer = "top";
