@@ -1,6 +1,7 @@
 {config, pkgs, ...}:
 let
   alias = {
+   
    ll = "ls -l";
    ".." = "cd ..";
    jrj = ''if [[ $(git status --porcelain) ]]; then
@@ -17,6 +18,11 @@ in
 programs.bash = {
  enable = true;
  shellAliases = alias;
+ initExtra = ''
+    if [[ $- == *i* ]]; then
+      nitch
+    fi
+  '';
 
 };
 programs.zsh = {
