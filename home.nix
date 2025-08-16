@@ -4,6 +4,7 @@
   imports = [ ./modules/sh.nix
               ./modules/hyprland.nix
 	      ./modules/git.nix
+	      ./modules/waybar.nix
 		       ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
