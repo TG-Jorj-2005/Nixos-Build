@@ -39,7 +39,7 @@
         
         "wlr/taskbar" = {
           format = "{icon}";
-          icon-size = 12;
+          icon-size = 15;
           tooltip-format = "{title}";
           on-click = "activate";
           on-click-middle = "close";
