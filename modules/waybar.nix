@@ -77,7 +77,7 @@
           format-charging = " {capacity}%";
           format-plugged = " {capacity}%";
           format-alt = "{icon} {time}";
-          format-icons = ["" "" "" "" ""];
+          format-icons = ["" "" "" "" ""];
           tooltip-format = "{timeTo}, {capacity}%";
         };
         
