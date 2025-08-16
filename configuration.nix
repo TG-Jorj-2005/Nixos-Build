@@ -159,7 +159,7 @@
    };
 
    home.SessionVariables = {
-     GTK THEME = "Catppuccin-Mocha-Standard-Blue-Dark";
+     GTK_THEME = "Catppuccin-Mocha-Standard-Blue-Dark";
    };
 
   # Enable the OpenSSH daemon.
