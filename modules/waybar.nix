@@ -1,6 +1,5 @@
 {config, lib, pkgs, ...}:
 {
-  catppuccin.waybar.enable = true;
   programs.waybar = { 
     enable = true;
     settings = {
@@ -118,16 +117,16 @@
      style = ''
       * {
         border: none;
-        border-radius: 0;
+        border-radius: 8;
         font-family: "JetBrainsMono Nerd Font";
-        font-size: 13px;
+        font-size: 12px;
         min-height: 0;
       }
 
       window#waybar {
-        background-color: #1e1e2e; /* Catppuccin Mocha base */
+        background-color: #1e1e2e; 
         border-radius: 10px;
-        color: #cdd6f4; /* Catppuccin Mocha text */
+        color: #cdd6f4; 
         transition-property: background-color;
         transition-duration: 0.5s;
       }
@@ -139,83 +138,65 @@
       #workspaces button {
         padding: 0 8px;
         background-color: transparent;
-        color: #6c7086; /* Catppuccin Mocha overlay1 */
+        color: #6c7086; 
         border-radius: 8px;
         transition: all 0.3s ease;
       }
 
       #workspaces button:hover {
-        background-color: rgba(137, 180, 250, 0.2); /* Catppuccin Mocha blue */
-        color: #89b4fa; /* Catppuccin Mocha blue */
+        background-color: rgba(137, 180, 250, 0.2); 
+        color: #89b4fa;
       }
 
       #workspaces button.active {
-        background-color: #89b4fa; /* Catppuccin Mocha blue */
-        color: #1e1e2e; /* Catppuccin Mocha base */
+        background-color: #89b4fa; 
+        color: #1e1e2e; 
       }
 
       #window,
+      #taskbar,
       #network,
       #pulseaudio,
       #battery,
       #clock {
         padding: 0 12px;
         margin: 0 3px;
-        background-color: #313244; /* Catppuccin Mocha surface0 */
+        background-color: #313244; 
         border-radius: 8px;
-        color: #cdd6f4; /* Catppuccin Mocha text */
-        transition: all 0.3s ease;
+        color: #cdd6f4; 
       }
 
       #network {
-        color: #89b4fa; /* Catppuccin Mocha blue */
+        color: #89b4fa; 
       }
 
       #network.disconnected {
-        background-color: #f38ba8; /* Catppuccin Mocha pink */
+        background-color: #f38ba8; 
         color: #1e1e2e;
       }
 
       #pulseaudio {
-        color: #cba6f7; /* Catppuccin Mocha mauve */
+        color: #cba6f7; 
       }
 
       #pulseaudio.muted {
-        background-color: #6c7086; /* Catppuccin Mocha overlay1 */
-        color: #45475a; /* Catppuccin Mocha surface1 */
+        background-color: #6c7086; 
+        color: #45475a; 
       }
 
       #battery {
-        color: #a6e3a1; /* Catppuccin Mocha green */
-      }
-
-      #battery.warning:not(.charging) {
-        background-color: #fab387; /* Catppuccin Mocha peach */
-        color: #1e1e2e;
-      }
-
-      #battery.critical:not(.charging) {
-        background-color: #f38ba8; /* Catppuccin Mocha pink */
-        color: #1e1e2e;
-        animation: battery-blink 0.5s linear infinite alternate;
+        color: #a6e3a1; 
       }
 
       #clock {
         color: #74c7ec; /* Catppuccin Mocha sapphire */
       }
 
-      @keyframes battery-blink {
-        to {
-          background-color: #eba0ac; /* Catppuccin Mocha maroon */
-        }
-      }
-
-      /* Hover effects */
+      
       #network:hover,
       #pulseaudio:hover,
       #battery:hover,
       #clock:hover {
-        transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
     '';
