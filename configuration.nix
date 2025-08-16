@@ -137,30 +137,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-   #Theme
-   gtk = {
-   enable = true;
-   theme = {
-     name = "Catppuccin-Mocha-Standard";
-     package = pkgs.catppuccin-gtk;
-    };
-    iconTheme = {
-     name = "Papiruis-Dark";
-     package = pkgs.papirus-icon-theme;
-     };
-   };
 
-   qt = {
-   enable = true;
-   platformTheme = "gtk";
-   style = {
-     name = "gtk2";
-     };
-   };
-
-   home.SessionVariables = {
-     GTK_THEME = "Catppuccin-Mocha-Standard-Blue-Dark";
-   };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
