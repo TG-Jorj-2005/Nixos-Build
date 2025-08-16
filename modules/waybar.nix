@@ -124,7 +124,7 @@
       }
 
       window#waybar {
-        background-color: #1e1e2e; 
+        background-color: transparent; 
         border-radius: 10px;
         color: #cdd6f4; 
         transition-property: background-color;
