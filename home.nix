@@ -6,6 +6,7 @@
 	      ./modules/git.nix
 	      ./modules/waybar.nix
 	      inputs.catppuccin.homeManagerModules.catppuccin
+	      ./modules/swww.nix
 		       ];
   catppuccin = {
    enable = true;
