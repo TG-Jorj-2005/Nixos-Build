@@ -39,7 +39,7 @@
         
         "wlr/taskbar" = {
           format = "{icon}";
-          icon-size = 14;
+          icon-size = 12;
           tooltip-format = "{title}";
           on-click = "activate";
           on-click-middle = "close";
@@ -165,7 +165,6 @@
         color: #cdd6f4; 
       }
       #taskbar {
-       padding: 0 2px;
         margin: 0 3px;
         background-color: #313244; 
         border-radius: 8px;
