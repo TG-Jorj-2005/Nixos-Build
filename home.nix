@@ -10,6 +10,7 @@
   catppuccin = {
    enable = true;
    flavor = "mocha";
+   accent = "pink";
   };
   catppuccin.waybar.enable = true;
 
