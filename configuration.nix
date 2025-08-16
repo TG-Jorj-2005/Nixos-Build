@@ -150,5 +150,21 @@
     };
   };
   system.stateVersion = "25.05"; # Did you read the comment?
+  #Auto Update and garbage collect
+  system ={
+    autoUpgrade={
+      enable = true;
+      dates = "weekly";
+      };
+     };
+   nix = {
+      gc= {
+       automatic = true;
+       dates = "daily";
+       options = "--delete-older-than 10d";
+
+        };
+	settings.auto-optimise-store = true;
+      };
 
 }
