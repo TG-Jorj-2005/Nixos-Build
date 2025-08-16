@@ -19,8 +19,10 @@
     brave
     curl
     wget
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code  
+    nerd-fonts.hack
   ];
-
 
   home.file = {
   };
