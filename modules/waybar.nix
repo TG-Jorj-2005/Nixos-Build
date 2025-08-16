@@ -154,7 +154,6 @@
       }
 
       #window,
-      #taskbar,
       #network,
       #pulseaudio,
       #battery,
@@ -164,6 +163,14 @@
         background-color: #313244; 
         border-radius: 8px;
         color: #cdd6f4; 
+      }
+      #taskbar {
+       padding: 0 9px;
+        margin: 0 3px;
+        background-color: #313244; 
+        border-radius: 8px;
+        color: #cdd6f4;
+
       }
 
       #network {
