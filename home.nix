@@ -7,10 +7,11 @@
 	      ./modules/waybar.nix
 	      inputs.catppuccin.homeManagerModules.catppuccin
 		       ];
-  catppucin = {
+  catppuccin = {
    enable = true;
    flavor = "mocha";
   };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jorj";
