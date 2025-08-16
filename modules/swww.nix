@@ -20,10 +20,11 @@
     Unit = {
       Description = "Set wallpaper with swww";
       After = [ "swww.service" ];
+       Requires = [ "swww.service" ];
     };
 
     Service = {
-      ExecStart = "${pkgs.swww}/bin/swww img ~/Downloads/eye.gif --transition-type any";
+      ExecStart = "${pkgs.swww}/bin/swww img /home/jorj/Downloads/eye.gif --transition-type any";
       Type = "oneshot";
     };
 
