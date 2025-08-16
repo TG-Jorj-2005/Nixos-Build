@@ -1,8 +1,5 @@
 {config, lib, pkgs, ...}:
 {
-{ pkgs, ... }:
-
-{
   systemd.user.services.swww = {
     Unit = {
       Description = "swww wallpaper daemon";
