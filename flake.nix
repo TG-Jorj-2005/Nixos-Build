@@ -7,10 +7,11 @@
      home-manager = {
        url = "github:nix-community/home-manager/master";
        inputs.nixpkgs.follows = "nixpkgs";
+       pyprland.url = "github:hyprland-community/pyprland";
      };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, pyprland, ... }@inputs:
   let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -19,6 +20,7 @@
    {
     nixosConfigurations={
     Nixos-JRJ-BRW = lib.nixosSystem {
+      environment.systemPackages = [ pyprland.packages."x86_64-linux".pyprland ];
       inherit system;
       modules = [
           
