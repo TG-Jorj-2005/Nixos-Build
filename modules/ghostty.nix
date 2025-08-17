@@ -2,7 +2,7 @@
 {
 programs.ghostty ={
   enable = true;
-    package = [pkgs.catppuccin-gtk pkgs.ghostty];
+    package = pkgs.catppuccin-gtk ;
  themes = {
     catppuccin-mocha = {
     background = "1e1e2e";
