@@ -12,6 +12,14 @@ else
   echo "No changes to commit"
 fi'';
    con = "nix-instantiate --parse";
+   nrb = "sudo nixos-rebuild switch --flake .";
+   hmn = "home-manager switch --flake .#jorj";
+   nfu = "sudo nix flake update";
+   all = ''
+   nrb
+   nfu
+   hmn
+   '';
 
     };
 in
