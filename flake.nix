@@ -20,7 +20,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
   in
    {
-    packages.system.jorj = 
+    packages.system.default = 
     (nvf.lib.neovimConfiguration {
     inherit pkgs;
     modules = [./assets/nvf-configuration.nix];
@@ -38,7 +38,9 @@
 homeConfigurations = {
    jorj = home-manager.lib.homeManagerConfiguration {
      inherit pkgs;
-     modules = [./home.nix];
+     modules = [
+      nvf.nixosModules.default
+     ./home.nix];
      extraSpecialArgs = {inherit inputs;};
 
      };
