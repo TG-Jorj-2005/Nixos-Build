@@ -1,3 +1,4 @@
+{config, pkgs, ...}:
 {
   programs.anyrun = {
     enable = true;
