@@ -9,28 +9,21 @@
        inputs.nixpkgs.follows = "nixpkgs";
        };
        pyprland.url = "github:hyprland-community/pyprland";
-       nvf.url = "github:notashelf/nvf";
 
  };
 
-  outputs = { self, nixpkgs, home-manager, pyprland, nvf, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, pyprland, ... }@inputs:
   let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
   in
    {
-    packages.system.default = 
-    (nvf.lib.neovimConfiguration {
-    inherit pkgs;
-    modules = [./assets/nvf-configuration.nix];
-    }).neovim;
 
     nixosConfigurations={
     Nixos-JRJ-BRW = lib.nixosSystem {
       inherit system;
       modules = [
-          nvf.nixosModules.default
          ./configuration.nix
       ];
     };
@@ -39,7 +32,6 @@ homeConfigurations = {
    jorj = home-manager.lib.homeManagerConfiguration {
      inherit pkgs;
      modules = [
-      nvf.homeManagerModules.default
      ./home.nix];
      extraSpecialArgs = {inherit inputs;};
 
