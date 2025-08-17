@@ -15,8 +15,7 @@
   ts.enable = true;
   rust.enable = true;
 
-statusline.lualine.enable = true;
-telescope.enable = true;
-autocomplete.nvim-cmp.enable = true;
-vim.languages.nix.enable = true;
+ statusline.lualine.enable = true;
+ telescope.enable = true;
+ vim.languages.nix.enable = true;
 }
