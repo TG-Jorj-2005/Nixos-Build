@@ -9,6 +9,7 @@
 	      ./modules/waybar.nix
 	      ./modules/rofi.nix
 	      ./modules/alacritty.nix
+	      ./modules/rust.nix       
 		       ];
 
 
