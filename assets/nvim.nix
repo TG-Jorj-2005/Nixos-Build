@@ -3,7 +3,6 @@
 programs.neovim = {
     enable = true;
     vimAlias = true;
-    package = neovim-nightly;
     plugins = with pkgs.vimPlugins;[
     LazyVim  ];
 };
