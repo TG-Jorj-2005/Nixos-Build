@@ -3,7 +3,7 @@
 programs.ghostty ={
   enable = true;
   themes = {
-    package = [pkgs.catppuccin-gtk];
+    package = [pkgs.catppuccin-gtk pkgs.ghostty];
     catppuccin-mocha = {
     background = "1e1e2e";
     cursor-color = "f5e0dc";
