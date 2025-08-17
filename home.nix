@@ -40,7 +40,7 @@
 
   qt={
   enable = true;
-  paltformTheme = "gtk";
+  platformTheme = "gtk";
   style = {
     name = "gtk2"; 
    };
