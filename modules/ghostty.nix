@@ -31,7 +31,7 @@ programs.ghostty ={
     };
    settings ={
       font-size = 12;
-      background-opacity = 0.95;
+      background-opacity = 1;
     };
 
 };
