@@ -166,7 +166,7 @@ wayland = {
         "SUPER, E, exec, $menu"
         "SUPER, P, pseudo" # dwindle
         "SUPER, J, togglesplit" # dwindle
-	"SUPER, S,exec, fullscreen"
+	"SUPER, S,fullscreen,1"
         
         # Move focus with mainMod + arrow keys
         "SUPER, left, movefocus, l"
