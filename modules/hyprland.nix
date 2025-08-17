@@ -159,7 +159,7 @@ wayland = {
 
        bind = [
         "SUPER, return, exec, $terminal"
-        "SUPER, K, killactive"
+        "SUPER, A, killactive"
         "SUPER, M, exit"
         "SUPER, F, exec, $fileManager"
         "SUPER, V, togglefloating"
