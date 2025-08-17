@@ -20,7 +20,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
   in
    {
-    packages.system.default = 
+    packages.system.jorj = 
     (nvf.lib.neovimConfiguration {
     inherit pkgs;
     modules = [./assets/nvf-configuration.nix];
