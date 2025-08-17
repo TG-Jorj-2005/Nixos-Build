@@ -27,8 +27,9 @@ home.packages = with pkgs;[
 wayland = {
  windowManager={
    hyprland={
+     enable = true;
      settings = {
-       
+              
 
        #Monitor
        monitor = "eDP-1,1920x1080@60,0x0,1";
@@ -73,7 +74,6 @@ wayland = {
 	decoration = {
            rounding = 10;
 
-	   rounding_power = 2;
 
 	   active_opacity = 0.97;
 	   inactive_opacity = 0.97;
