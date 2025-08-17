@@ -220,3 +220,5 @@ wayland = {
    };
  };
 }
+
+#IN CAZ DE CONFLICTE cu ~/.config/hypr/hyprland.conf redenumestel in confdl si fa rebuild la home-manager(se aplica si la restul fisierelor si sa fie git ul up to date cu tot )

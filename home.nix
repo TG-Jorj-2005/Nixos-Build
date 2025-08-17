@@ -23,13 +23,13 @@
     enable = true;
 
     theme = {
-      package = pkgs.flat-remix-gtk;
-      name = "Flat-Remix-GTK-Grey-Darkest";
+      package = pkgs.catppuccin-gtk;
+      name = "Catppuccin-Mocha-Standard-Blue-Dark";
     };
 
     iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
+      package = pkgs.papirus-icon-theme;
+      name = "Papiruis-Dark";
     };
 
     font = {
@@ -57,6 +57,9 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code  
     nerd-fonts.hack
+    spotify
+    vscode
+    vimPlugins.LazyVim
   ];
 
   home.file = {
