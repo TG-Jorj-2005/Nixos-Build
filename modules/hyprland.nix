@@ -219,7 +219,7 @@ wayland = {
           
       windowrulev2 = [
       "workspace 1,class:^(Alacritty)$,title:^(.*btop.*)$"
-
+       "pin,class:^(waybar)$"
       ];
 
 
