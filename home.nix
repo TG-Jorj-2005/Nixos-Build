@@ -7,6 +7,7 @@
 	      ./modules/fuzzel.nix
 	      ./modules/starhip.nix
 	      ./modules/waybar.nix
+	      ./modules/rofi.nix
 	      ./modules/alacritty.nix
 		       ];
 
