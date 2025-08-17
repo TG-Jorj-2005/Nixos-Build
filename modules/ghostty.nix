@@ -36,5 +36,5 @@ programs.ghostty ={
     enableBashIntegration = true;
     enableZshIntegration = true;
 };
-
+};
 }

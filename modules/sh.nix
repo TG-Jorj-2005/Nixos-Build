@@ -16,6 +16,7 @@ fi'';
    hmn = "home-manager switch --flake .#jorj";
    nfu = "sudo nix flake update";
    all = ''
+   jrj
    nrb
    nfu
    hmn
