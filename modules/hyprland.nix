@@ -25,7 +25,7 @@ home.packages = with pkgs;[
  slurp         # Utilitar pentru selectarea unei zone de pe ecran (folosit cu grim)
  nautilus
  alacritty
- anyrun
+ rofi-wayland
 ];
 wayland = {
  windowManager={
@@ -41,7 +41,7 @@ wayland = {
        #Programer use
         "$terminal" = "alacritty";
 	"$fileManager" = "nautilus";
-	"$menu" = "anyrun";
+	"$menu" = "rofi -show drun";
 	
 
 	#Auto-Start
