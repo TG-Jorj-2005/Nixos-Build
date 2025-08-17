@@ -5,6 +5,7 @@
               ./modules/hyprland.nix
 	      ./modules/git.nix
 	      ./modules/fuzzel.nix
+	      ./modules/ghostty.nix
 	      ./modules/starhip.nix
 	      ./modules/waybar.nix
 	      inputs.catppuccin.homeManagerModules.catppuccin
