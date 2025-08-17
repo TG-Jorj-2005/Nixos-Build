@@ -4,6 +4,7 @@
   imports = [ ./modules/sh.nix
               ./modules/hyprland.nix
 	      ./modules/git.nix
+	      ./modules/nvf.nix
 	      ./modules/fuzzel.nix
 	      ./modules/starhip.nix
 	      ./modules/waybar.nix
