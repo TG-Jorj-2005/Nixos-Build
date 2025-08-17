@@ -23,8 +23,8 @@
     enable = true;
 
     theme = {
-      package = pkgs.catppuccin-gtk;
-      name = "Catppuccin-Mocha";
+      package = pkgs.gruvbox-dark-gtk;
+      name = "Gruvbox-Dark";
     };
 
     iconTheme = {
