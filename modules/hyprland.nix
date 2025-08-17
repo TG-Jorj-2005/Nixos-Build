@@ -49,7 +49,7 @@ wayland = {
 	exec-once = [
 	"swww-daemon" 
 	"waybar"
-	"[workspace 1] btop++"
+	"alacritty -t btop -e btop"
 	"swww img /home/jorj/Downloads/eye.gif --transition-type any" ];
 
 	#ENV Variables
@@ -218,7 +218,8 @@ wayland = {
       ];
           
       windowrulev2 = [
-        "workspace 1,class:^(btop)$"
+      "workspace 1,class:^(Alacritty)$,title:^(.*btop.*)$"
+
       ];
 
 
