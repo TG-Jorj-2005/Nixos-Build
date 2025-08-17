@@ -39,7 +39,7 @@ homeConfigurations = {
    jorj = home-manager.lib.homeManagerConfiguration {
      inherit pkgs;
      modules = [
-      nvf.nixosModules.default
+      nvf.homeManagerModules.default
      ./home.nix];
      extraSpecialArgs = {inherit inputs;};
 
