@@ -99,7 +99,6 @@
      wget
      wofi
      neovim
-     ghostty
      dunst
      flameshot
      starship

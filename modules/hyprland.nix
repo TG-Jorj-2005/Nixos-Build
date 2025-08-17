@@ -24,6 +24,7 @@ home.packages = with pkgs;[
  grim               # Screenshot utility pentru Wayland
  slurp         # Utilitar pentru selectarea unei zone de pe ecran (folosit cu grim)
  nautilus
+ ghostty
 ];
 wayland = {
  windowManager={
