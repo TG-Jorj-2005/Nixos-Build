@@ -19,6 +19,7 @@ fi'';
    nrb
    nfu
    hmn
+   jrj
    '';
 
     };
