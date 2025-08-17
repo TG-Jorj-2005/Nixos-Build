@@ -12,13 +12,15 @@ programs.neovim = {
    
       set runtimepath+=${lazy_path}
 
-      lua << EOF
-      require("lazy").setup({
+     lua <<EOF
+      local lazy = require("lazy")
+      lazy.setup({
         spec = {
           { import = "LazyVim.plugins" },
         },
       })
-      EOF    '';
+      EOF
+      '';
 
     };
 
