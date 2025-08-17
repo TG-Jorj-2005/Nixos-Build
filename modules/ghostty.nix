@@ -31,10 +31,10 @@ programs.ghostty ={
     };
    settings ={
       font-size = 12;
-      background-opacity = 0.96;
+      background-opacity = 0.98;
     };
     enableBashIntegration = true;
-    enableZshIntegration = true;
+
 };
 
 }
