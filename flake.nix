@@ -9,16 +9,14 @@
        inputs.nixpkgs.follows = "nixpkgs";
        };
        pyprland.url = "github:hyprland-community/pyprland";
-      crate2nix.url = "github:kolloch/crate2nix";
 
  };
 
-  outputs = { self, nixpkgs, home-manager, pyprland, crate2nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, pyprland, ... }@inputs:
   let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      rustPkgs = import ./Cargo.nix {inherit pkgs;};
   in
    {
     nixosConfigurations={
@@ -30,16 +28,6 @@
       ];
     };
   };
-   packages.${system}.default = rustPkgs.rootCrate.build;
-
-      # Shell de dezvoltare
-      devShells.${system}.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.rustc
-          pkgs.cargo
-          pkgs.rust-analyzer
-        ];
-      }; 
 homeConfigurations = {
    jorj = home-manager.lib.homeManagerConfiguration {
      inherit pkgs;
