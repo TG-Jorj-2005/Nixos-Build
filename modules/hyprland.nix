@@ -24,7 +24,6 @@ home.packages = with pkgs;[
  grim               # Screenshot utility pentru Wayland
  slurp         # Utilitar pentru selectarea unei zone de pe ecran (folosit cu grim)
  nautilus
- alacritty
 ];
 wayland = {
  windowManager={
@@ -38,7 +37,7 @@ wayland = {
        
 
        #Programer use
-        "$terminal" = "alacritty";
+        "$terminal" = "ghostty";
 	"$fileManager" = "nautilus";
 	"$menu" = "fuzzel";
 	
