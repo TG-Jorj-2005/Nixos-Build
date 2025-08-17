@@ -145,18 +145,18 @@ in
         thickness = 0.15;
       };
       
-      # Setări shell
-      shell = {
-        program = "${pkgs.zsh}/bin/zsh";
-        args = [ "--login" ];
+      # Setări terminal
+      terminal = {
+        shell = {
+          program = "${pkgs.bash}/bin/bash";
+          args = [ "--login" ];
+        };
       };
       
-      # Live config reload
+      # Setări generale
       general = {
-      live_config_reload = true;
+        live_config_reload = true;
       };
     };
   };
 }
-
-#use alacritty migrate after change
