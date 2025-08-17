@@ -47,8 +47,8 @@ wayland = {
 	"swww img /home/jorj/Downloads/eye.gif --transition-type any" ];
 
 	#ENV Variables
-	env =  "XCURSOR_SIZE,24";
-        env = "HYPRCURSOR_SIZE,24";
+	env =[  "XCURSOR_SIZE,24"
+              "HYPRCURSOR_SIZE,24"];
 
         #Imagine 
 
