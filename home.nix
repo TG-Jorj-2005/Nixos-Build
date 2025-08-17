@@ -8,6 +8,7 @@
 	      ./modules/ghostty.nix
 	      ./modules/starhip.nix
 	      ./modules/waybar.nix
+	      ./modules/alacritty.nix
 		       ];
 
 
