@@ -17,7 +17,7 @@ home.packages = with pkgs;[
  gtklock            # Screen locker pentru Wayland - blochează ecranul
  swaybg             # Background/wallpaper setter pentru Wayland
  xdg-desktop-portal-hyprland # Portal pentru integrarea aplicațiilor cu Hyprland
- wlsunset           # Blue light filter pentru Wayland - schimbă temperatura culorilor
+ wlsunset          # Blue light filter pentru Wayland - schimbă temperatura culorilor
  pyprland           # Plugin manager și extensii pentru Hyprland (scris în Python)
  pavucontrol        # PulseAudio Volume Control - interfață grafică pentru audio
  pamixer            # PulseAudio mixer din linia de comandă
@@ -166,6 +166,7 @@ wayland = {
         "SUPER, E, exec, $menu"
         "SUPER, P, pseudo" # dwindle
         "SUPER, J, togglesplit" # dwindle
+	"SUPER, S,exec, fullscreen"
         
         # Move focus with mainMod + arrow keys
         "SUPER, left, movefocus, l"
