@@ -12,7 +12,7 @@ home.packages = with pkgs;[
  wl-clipboard       # Utilities pentru clipboard în Wayland (wl-copy, wl-paste)
  hyprland-protocols # Protocoale Wayland specifice pentru Hyprland
  hyprpicker         # Color picker pentru Hyprland - selectează culori de pe ecran
- thunar             # File manager (din XFCE) - navigare prin fișiere
+ xfce.thunar             # File manager (din XFCE) - navigare prin fișiere
  swayidle           # Idle daemon - gestionează acțiuni când PC-ul e inactiv
  gtklock            # Screen locker pentru Wayland - blochează ecranul
  swaybg             # Background/wallpaper setter pentru Wayland
