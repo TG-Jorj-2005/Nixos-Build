@@ -8,7 +8,6 @@
 	      ./modules/ghostty.nix
 	      ./modules/starhip.nix
 	      ./modules/waybar.nix
-	      inputs.catppuccin.homeManagerModules.catppuccin
 		       ];
 
 
@@ -47,7 +46,6 @@
    };
   };
 
-  catppuccin.waybar.enable = true;
   
   nixpkgs.config.allowUnfree = true;
 
