@@ -38,6 +38,14 @@
     };
   };
 
+  qt={
+  enable = true;
+  paltformTheme = "gtk";
+  style = {
+    name = "gtk2"; 
+   };
+  };
+
   catppuccin.waybar.enable = true;
   
   nixpkgs.config.allowUnfree = true;
