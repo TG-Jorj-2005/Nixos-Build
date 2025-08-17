@@ -9,13 +9,15 @@
        inputs.nixpkgs.follows = "nixpkgs";
        };
        pyprland.url = "github:hyprland-community/pyprland";
+       naersk.url = "github:nix-community/naersk";
   };
 
-  outputs = { self, nixpkgs, home-manager, pyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, pyprland, naersk, ... }@inputs:
   let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      naerskLib = pkgs.callPackage naersk {};
   in
    {
     nixosConfigurations={
@@ -26,6 +28,11 @@
          ./configuration.nix
       ];
     };
+  };
+  packages.system.default = naerskLib.buildPackage {
+    src =./.;
+    buildInputs = [pkgs.glib];
+    nativeBuildInputs = [pkgs.pkg-config];
   };
   homeConfigurations = {
    jorj = home-manager.lib.homeManagerConfiguration {
