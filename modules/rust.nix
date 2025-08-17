@@ -23,7 +23,10 @@
     cmake           # pentru crate-uri care compilează C/C++
     
     # Optional: pentru debugging
-    gdb             # debugger
+    gdb# debugger
+    gcc
+    binutils
+    glibc
   ];
   
   # Environment variables pentru Rust
