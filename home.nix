@@ -6,6 +6,7 @@
 	      ./modules/git.nix
 	      ./modules/nvf.nix
 	      ./modules/fuzzel.nix
+              ./assets/nvf-configuration.nix
 	      ./modules/starhip.nix
 	      ./modules/waybar.nix
 	      inputs.catppuccin.homeManagerModules.catppuccin
