@@ -101,7 +101,6 @@
      neovim
      ghostty
      dunst
-     alacritty
      flameshot
      starship
      catppuccin-gtk
