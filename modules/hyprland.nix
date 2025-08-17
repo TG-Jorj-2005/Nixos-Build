@@ -36,7 +36,7 @@ wayland = {
        
 
        #Programer use
-        "$terminal" = "ghostty";
+        "$terminal" = "alacritty";
 	"$fileManager" = "thunar";
 	"$menu" = "fuzzel";
 	
