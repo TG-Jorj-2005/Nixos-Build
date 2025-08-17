@@ -54,9 +54,9 @@ wayland = {
         #Imagine 
 
 	general = {
-          gasp_in = 3;
+          gaps_in = 3;
 	  
-	  gasp_out = 10;
+	  gaps_out = 10;
 
 	  border_size =2;
 
@@ -79,7 +79,6 @@ wayland = {
 	   inactive_opacity = 0.97;
            
 	   blur = {
-	     enable = true;
 	     size = 3;
 	     passes = 1;
 	     vibrancy = 0.1696;
@@ -87,7 +86,7 @@ wayland = {
 	     };
 
 	  shadow = {
-            enable = true;
+            
 	    range = 4;
 	    render_power = 3;
 	    color = "rgba(1a1a1aee)";
@@ -96,7 +95,6 @@ wayland = {
 	};
 
 	animations = {
-          enable = true;
 
 	     bezier = [ 
 	      "easeOutQuint,0.23,1,0.32,1"
