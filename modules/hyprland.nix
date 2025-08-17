@@ -26,7 +26,7 @@ home.packages = with pkgs;[
 ];
 wayland = {
  windowManager={
-   hyrpland={
+   hyprpland={
      settings = {
        
 
