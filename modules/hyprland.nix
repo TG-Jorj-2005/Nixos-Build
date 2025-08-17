@@ -24,6 +24,7 @@ home.packages = with pkgs;[
  grim               # Screenshot utility pentru Wayland
  slurp         # Utilitar pentru selectarea unei zone de pe ecran (folosit cu grim)
  nautilus
+ btop
  alacritty
  rofi-wayland
 ];
@@ -215,7 +216,9 @@ wayland = {
         "SUPER, mouse:273, resizewindow"
       ];
           
-
+      windowrulev2 = [
+        "workspace 1,class:^(btop)$"
+      ];
 
 
 	 
