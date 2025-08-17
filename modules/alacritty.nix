@@ -70,7 +70,7 @@ in
 
     # Other options
     drawBoldTextWithBrightColors = true;
-    backgroundOpacity = 0.96;
+    Opacity = 0.96;
     hideMouseWhenTyping = true;
   };
 }
