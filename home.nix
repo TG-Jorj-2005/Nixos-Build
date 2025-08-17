@@ -8,6 +8,7 @@
 	      ./modules/starhip.nix
 	      ./modules/waybar.nix
 	      ./modules/alacritty.nix
+	      ./modules/anyrun.nix
 		       ];
 
 
