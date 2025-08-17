@@ -30,7 +30,7 @@ programs.ghostty ={
   };
     };
    settings ={
-      font-size = 13;
+      font-size = 12;
       background-opacity = 0.96;
     };
     enableBashIntegration = true;
