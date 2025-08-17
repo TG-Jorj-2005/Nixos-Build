@@ -12,12 +12,12 @@
 
  };
 
-  outputs = { self, nixpkgs, home-manager, pyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, pyprland,  ... }@inputs:
   let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-  in
+in
    {
 
     nixosConfigurations={
