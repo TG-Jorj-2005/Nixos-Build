@@ -152,7 +152,9 @@ in
       };
       
       # Live config reload
+      general = {
       live_config_reload = true;
+      };
     };
   };
 }
