@@ -22,9 +22,9 @@
   gtk = {
     enable = true;
 
-    theme = {
-      package = pkgs.gruvbox-dark-gtk;
-      name = "Gruvbox-Dark";
+   theme = {
+      package = pkgs.catppuccin-gtk;
+      name = "Catppuccin-Mocha";
     };
 
     iconTheme = {

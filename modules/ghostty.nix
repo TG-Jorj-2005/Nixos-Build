@@ -1,35 +1,46 @@
 { config, pkgs, ... }:
-let
-  gruVboxTheme = pkgs.writeText "Gruvbox-Dark.json" ''
-    {
-      "background": "#282828",
-      "foreground": "#ebdbb2",
-      "cursor-color": "#fe8019",
-      "palette": [
-        "#282828", "#cc241d", "#98971a", "#d79921",
-        "#458588", "#b16286", "#689d6a", "#a89984",
-        "#928374", "#fb4934", "#b8bb26", "#fabd2f",
-        "#83a598", "#d3869b", "#8ec07c", "#ebdbb2"
-      ],
-      "selection-background": "#3c3836",
-      "selection-foreground": "#ebdbb2"
-    }
-  '';
-in
+
 {
   programs.ghostty = {
     enable = true;
-     themes = {
-      "Gruvbox-Dark" = builtins.fromJSON (builtins.readFile gruVboxTheme);
-    };
-    settings = {
-      font-size = 12;
-      background-opacity = 1.0; # fără transparență -> start mai rapid
+
+    # Tema Catppuccin Mocha pentru Ghostty
+    themes = {
+      "Catppuccin-Mocha" = {
+        background = "1e1e2e";
+        cursor-color = "f5e0dc";
+        foreground = "cdd6f4";
+        palette = [
+          "0=#45475a"
+          "1=#f38ba8"
+          "2=#a6e3a1"
+          "3=#f9e2af"
+          "4=#89b4fa"
+          "5=#f5c2e7"
+          "6=#94e2d5"
+          "7=#bac2de"
+          "8=#585b70"
+          "9=#f38ba8"
+          "10=#a6e3a1"
+          "11=#f9e2af"
+          "12=#89b4fa"
+          "13=#f5c2e7"
+          "14=#94e2d5"
+          "15=#a6adc8"
+        ];
+        selection-background = "353749";
+        selection-foreground = "cdd6f4";
+      };
     };
 
-    # Dezactivate pentru test -> prompt mai rapid
-    enableBashIntegration = false;
-    enableZshIntegration = false;
+    # Setări Ghostty
+    settings = {
+      font-size = 12;
+      background-opacity = 0.96;
+    };
+
+    enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 }
 
