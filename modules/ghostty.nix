@@ -36,8 +36,6 @@
     enableBashIntegration = false;
     enableZshIntegration = false;
 
-    # Tema implicită
-    defaultTheme = "catppuccin-mocha";
   };
 }
 
