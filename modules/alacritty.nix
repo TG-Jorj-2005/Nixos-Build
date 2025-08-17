@@ -110,8 +110,8 @@ in
       window = {
         opacity = 0.96;
         padding = {
-          x = 6;
-          y = 6;
+          x = 3;
+          y = 3;
         };
         dynamic_padding = true;
         decorations = "full";
