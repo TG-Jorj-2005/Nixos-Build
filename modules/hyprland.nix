@@ -22,7 +22,8 @@ home.packages = with pkgs;[
  pavucontrol        # PulseAudio Volume Control - interfață grafică pentru audio
  pamixer            # PulseAudio mixer din linia de comandă
  grim               # Screenshot utility pentru Wayland
- slurp              # Utilitar pentru selectarea unei zone de pe ecran (folosit cu grim)
+ slurp         # Utilitar pentru selectarea unei zone de pe ecran (folosit cu grim)
+ nautilus
 ];
 wayland = {
  windowManager={
@@ -37,7 +38,7 @@ wayland = {
 
        #Programer use
         "$terminal" = "ghostty";
-	"$fileManager" = "thunar";
+	"$fileManager" = "nautilus";
 	"$menu" = "fuzzel";
 	
 
