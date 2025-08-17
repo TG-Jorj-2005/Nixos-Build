@@ -1,6 +1,6 @@
 {config, lib, pkgs,...}:
 let
-  lazy_path = "${pkgs.vimPlugins.lazy-nvim}/share/nvim/site/pack/packer/start/lazy.nvim";
+ lazy_path = "/home/jorj/.config/nvim/";
 in
 {
 programs.neovim = {
@@ -9,20 +9,12 @@ programs.neovim = {
     plugins = with pkgs.vimPlugins;[
     LazyVim  ];
     extraConfig = ''
-   
-      set runtimepath+=${lazy_path}
+      git clone https://github.com/LazyVim/LazyVim.git ${lazy_path}
 
-     lua <<EOF
-      local lazy = require("lazy")
-      lazy.setup({
-        spec = {
-          { import = "LazyVim.plugins" },
-        },
-      })
-      EOF
-      '';
 
-    };
+   '';
+
+      };
 
 
 }
