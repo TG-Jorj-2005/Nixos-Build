@@ -49,6 +49,7 @@ wayland = {
 	exec-once = [
 	"swww-daemon" 
 	"waybar"
+	"leep 2 && btop"
 	"swww img /home/jorj/Downloads/eye.gif --transition-type any" ];
 
 	#ENV Variables
