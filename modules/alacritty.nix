@@ -158,3 +158,5 @@ in
     };
   };
 }
+
+#use alacritty migrate after change
