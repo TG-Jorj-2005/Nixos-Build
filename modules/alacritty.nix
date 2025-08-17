@@ -45,7 +45,7 @@ in
           family = "FiraCode Nerd Font";
           style = "Italic";
         };
-        size = 12.0;
+        size = 14.0;
       };
       
       # Configurare culori Catppuccin Mocha
