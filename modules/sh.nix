@@ -11,6 +11,7 @@ let
 else
   echo "No changes to commit"
 fi'';
+   con = "nix-instantiate --parse";
 
     };
 in
