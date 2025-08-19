@@ -179,7 +179,7 @@
 
       }
       #os_logo {
-       font-size: 20px;
+       font-size: 30px;
          }
 
       #network {
