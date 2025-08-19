@@ -180,7 +180,7 @@
       }
      #custom-os_logo {
        font-size: 18px;
-       padding: 0 10px;
+       padding: 0 5px;
        color: #5277C3;
 	 }
 
