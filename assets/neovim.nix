@@ -1,121 +1,174 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.neovim = {
-    extraPackages = with pkgs; [
-      # LazyVim
-      lua-language-server
-      stylua
-      # Telescope
-      ripgrep
-    ];
-
-    plugins = with pkgs.vimPlugins; [
-      lazy-nvim
-    ];
-
-    extraLuaConfig =
-      let
-        plugins = with pkgs.vimPlugins; [
-          # LazyVim
-          LazyVim
-          bufferline-nvim
-          cmp-buffer
-          cmp-nvim-lsp
-          cmp-path
-          cmp_luasnip
-          conform-nvim
-          dashboard-nvim
-          dressing-nvim
-          flash-nvim
-          friendly-snippets
-          gitsigns-nvim
-          indent-blankline-nvim
-          lualine-nvim
-          neo-tree-nvim
-          neoconf-nvim
-          neodev-nvim
-          noice-nvim
-          nui-nvim
-          nvim-cmp
-          nvim-lint
-          nvim-lspconfig
-          nvim-notify
-          nvim-spectre
-          nvim-treesitter
-          nvim-treesitter-context
-          nvim-treesitter-textobjects
-          nvim-ts-autotag
-          nvim-ts-context-commentstring
-          nvim-web-devicons
-          persistence-nvim
-          plenary-nvim
-          telescope-fzf-native-nvim
-          telescope-nvim
-          todo-comments-nvim
-          tokyonight-nvim
-          trouble-nvim
-          vim-illuminate
-          vim-startuptime
-          which-key-nvim
-          { name = "LuaSnip"; path = luasnip; }
-          { name = "catppuccin"; path = catppuccin-nvim; }
-          { name = "mini.ai"; path = mini-nvim; }
-          { name = "mini.bufremove"; path = mini-nvim; }
-          { name = "mini.comment"; path = mini-nvim; }
-          { name = "mini.indentscope"; path = mini-nvim; }
-          { name = "mini.pairs"; path = mini-nvim; }
-          { name = "mini.surround"; path = mini-nvim; }
-        ];
-        mkEntryFromDrv = drv:
-          if lib.isDerivation drv then
-            { name = "${lib.getName drv}"; path = drv; }
-          else
-            drv;
-        lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
-      in
-      ''
-        require("lazy").setup({
-          defaults = {
-            lazy = true,
-          },
-          dev = {
-            -- reuse files from pkgs.vimPlugins.*
-            path = "${lazyPath}",
-            patterns = { "" },
-            -- fallback to download
-            fallback = true,
-          },
-          spec = {
-            { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-            -- The following configs are needed for fixing lazyvim on nix
-            -- force enable telescope-fzf-native.nvim
-            { "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
-            -- disable mason.nvim, use programs.neovim.extraPackages
-            { "williamboman/mason-lspconfig.nvim", enabled = false },
-            { "williamboman/mason.nvim", enabled = false },
-            -- import/override with your plugins
-            { import = "plugins" },
-            -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
-            { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
-          },
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    
+    # Configurația LazyVim
+    extraLuaConfig = ''
+      -- Bootstrap lazy.nvim
+      local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+      if not vim.loop.fs_stat(lazypath) then
+        vim.fn.system({
+          "git",
+          "clone",
+          "--filter=blob:none",
+          "https://github.com/folke/lazy.nvim.git",
+          "--branch=stable",
+          lazypath,
         })
-      '';
+      end
+      vim.opt.rtp:prepend(lazypath)
+
+      -- LazyVim setup
+      require("lazy").setup({
+        spec = {
+          -- Import LazyVim și plugin-urile sale
+          { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+          -- Import orice extras dorite
+          { import = "lazyvim.plugins.extras.lang.typescript" },
+          { import = "lazyvim.plugins.extras.lang.json" },
+          { import = "lazyvim.plugins.extras.ui.mini-animate" },
+          -- Import plugin-urile personale din lua/plugins
+          { import = "plugins" },
+        },
+        defaults = {
+          lazy = false,
+          version = false, -- folosește întotdeauna ultima versiune
+        },
+        checker = { enabled = true }, -- verifică automat pentru actualizări
+        performance = {
+          rtp = {
+            -- dezactivează plugin-uri built-in pe care nu le folosești
+            disabled_plugins = {
+              "gzip",
+              "matchit",
+              "matchparen",
+              "netrwPlugin",
+              "tarPlugin",
+              "tohtml",
+              "tutor",
+              "zipPlugin",
+            },
+          },
+        },
+      })
+
+      -- Setări LazyVim
+      vim.g.mapleader = " "
+      vim.g.maplocalleader = "\\"
+      
+      -- Opțiuni de bază
+      vim.opt.number = true
+      vim.opt.relativenumber = true
+      vim.opt.mouse = "a"
+      vim.opt.ignorecase = true
+      vim.opt.smartcase = true
+      vim.opt.hlsearch = false
+      vim.opt.wrap = false
+      vim.opt.breakindent = true
+      vim.opt.tabstop = 2
+      vim.opt.shiftwidth = 2
+      vim.opt.expandtab = true
+      vim.opt.smartindent = true
+      vim.opt.termguicolors = true
+      vim.opt.signcolumn = "yes"
+      vim.opt.updatetime = 250
+      vim.opt.timeoutlen = 300
+      vim.opt.completeopt = "menuone,noselect"
+      vim.opt.undofile = true
+    '';
+
+    # Plugin-uri esențiale pentru LazyVim
+    plugins = with pkgs.vimPlugins; [
+      # Plugin manager
+      lazy-nvim
+      
+      # LazyVim core
+      LazyVim
+      
+      # UI
+      tokyonight-nvim
+      lualine-nvim
+      nvim-web-devicons
+      dressing-nvim
+      
+      # Editor
+      telescope-nvim
+      telescope-fzf-native-nvim
+      nvim-treesitter.withAllGrammars
+      nvim-treesitter-textobjects
+      
+      # LSP
+      nvim-lspconfig
+      mason-nvim
+      mason-lspconfig-nvim
+      
+      # Completion
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      luasnip
+      cmp_luasnip
+      
+      # Git
+      gitsigns-nvim
+      
+      # File explorer
+      neo-tree-nvim
+      
+      # Utilities
+      which-key-nvim
+      comment-nvim
+      indent-blankline-nvim
+      
+      # Dependencies
+      plenary-nvim
+      nui-nvim
+    ];
   };
 
-  # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
-  xdg.configFile."nvim/parser".source =
-    let
-      parsers = pkgs.symlinkJoin {
-        name = "treesitter-parsers";
-        paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
-          c
-          lua
-        ])).dependencies;
-      };
-    in
-    "${parsers}/parser";
+  # Dependențe externe necesare
+  home.packages = with pkgs; [
+    # Căutare și navigare
+    ripgrep
+    fd
+    fzf
+    
+    # Git
+    lazygit
+    
+    # LSP servers și tools
+    nodejs
+    python3
+    
+    # Compilatori
+    gcc
+    
+    # Formatters și linters
+    stylua
+    nixpkgs-fmt
+    
+    # Language servers comune
+    lua-language-server
+    nil # Nix LSP
+    nodePackages.typescript-language-server
+    nodePackages.eslint
+    nodePackages.prettier
+  ];
 
-  # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
-  xdg.configFile."nvim/lua".source = ./lua;
+  # Configurații suplimentare pentru shell
+  programs.zsh.shellAliases = {
+    vi = "nvim";
+    vim = "nvim";
+  };
+
+  programs.bash.shellAliases = {
+    vi = "nvim";
+    vim = "nvim";
+  };
 }
