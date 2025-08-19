@@ -7,7 +7,6 @@
     viAlias = true;
     vimAlias = true;
     
-    # Configurația minimă pentru LazyVim
     extraLuaConfig = ''
       -- Bootstrap lazy.nvim
       local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -23,24 +22,35 @@
       end
       vim.opt.rtp:prepend(lazypath)
 
-      -- Setări de bază
+      -- Setări de bază pentru LazyVim
       vim.g.mapleader = " "
       vim.g.maplocalleader = "\\"
 
-      -- LazyVim setup
+      -- Încarcă LazyVim
       require("lazy").setup({
         spec = {
-          -- Import LazyVim
+          -- Importă totul de la LazyVim
           { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-          -- Extras opționale
+          
+          -- Extras-uri recomandate
+          { import = "lazyvim.plugins.extras.coding.copilot" },
+          { import = "lazyvim.plugins.extras.lang.typescript" },
           { import = "lazyvim.plugins.extras.lang.json" },
-          { import = "plugins" },
+          { import = "lazyvim.plugins.extras.lang.python" },
+          { import = "lazyvim.plugins.extras.ui.mini-animate" },
+          { import = "lazyvim.plugins.extras.util.project" },
+          
+          -- Poți adăuga plugin-uri personalizate aici mai târziu
+          -- { import = "plugins" },
         },
         defaults = {
           lazy = false,
           version = false,
         },
-        checker = { enabled = true },
+        checker = { 
+          enabled = true,
+          frequency = 3600, -- verifică o dată pe oră
+        },
         performance = {
           rtp = {
             disabled_plugins = {
@@ -56,31 +66,62 @@
           },
         },
       })
+
+      -- Încarcă configurația LazyVim
+      require("lazyvim").setup()
     '';
   };
 
-  # Doar dependențele esențiale
+  # Toate dependențele necesare pentru LazyVim
   home.packages = with pkgs; [
-    # Căutare
+    # Utilitare pentru căutare
     ripgrep
     fd
+    fzf
     
-   unzip
-   gnumake
-   gcc
-   pkg-config
-  
+    # Sistem de fișiere
+    unzip
+    zip
+    
     # Git
     lazygit
     git
+    gh
     
-    # Build tools
+    # Build tools și compilatoare
+    gnumake
+    gcc
+    pkg-config
+    cmake
+    ninja
+    
+    # Limbaje de programare
     nodejs
     python3
-    gcc
+    rustc
+    cargo
     
-    # LSP basics
+    # LSP servers esențiale
     lua-language-server
-    nil
+    nil                   # Nix LSP
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted  # HTML, CSS, JSON
+    pyright
+    rust-analyzer
+    nodePackages.bash-language-server
+    
+    # Formatters
+    nodePackages.prettier
+    black                 # Python formatter
+    shfmt                 # Shell formatter
+    nixpkgs-fmt           # Nix formatter
+    
+    # Debugging
+    nodePackages.node-debug2
+    
+    # Alte utilitare
+    tree-sitter           # Pentru syntax highlighting
+    curl
+    wget
   ];
 }
