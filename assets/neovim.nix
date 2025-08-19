@@ -65,6 +65,11 @@
     ripgrep
     fd
     
+   unzip
+   gnumake
+   gcc
+   pkg-config
+  
     # Git
     lazygit
     git
