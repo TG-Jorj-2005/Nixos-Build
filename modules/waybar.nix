@@ -178,9 +178,11 @@
         color: #cdd6f4;
 
       }
-      #os_logo {
-       font-size: 30px;
-         }
+     #custom-os_logo {
+       font-size: 18px;
+       padding: 0 10px;
+       color: #5277C3;
+	 }
 
       #network {
         color: #89b4fa; 
