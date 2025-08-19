@@ -13,10 +13,16 @@
         margin-left = 10;
         margin-right = 10;
         
-        modules-left = [ "hyprland/workspaces" "wlr/taskbar" ];
+        modules-left = [ "custom/os_logo" "hyprland/workspaces" "wlr/taskbar" ];
         modules-center = [ "hyprland/window" ];
         modules-right = [ "network" "pulseaudio" "battery" "clock" ];
         
+         "custom/os_logo" = {
+               format = " ";
+               tooltip = "Nixos";
+	       on-click = "alacritty";
+                 	 };
+
         "hyprland/workspaces" = {
           disable-scroll = true;
           all-outputs = true;
@@ -157,6 +163,7 @@
       #network,
       #pulseaudio,
       #battery,
+      #os_logo,
       #clock {
         padding: 0 9px;
         margin: 0 3px;
