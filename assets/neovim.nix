@@ -116,8 +116,6 @@
     shfmt                 # Shell formatter
     nixpkgs-fmt           # Nix formatter
     
-    # Debugging
-    nodePackages.node-debug2
     
     # Alte utilitare
     tree-sitter           # Pentru syntax highlighting
