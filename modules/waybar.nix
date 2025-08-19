@@ -18,8 +18,8 @@
         modules-right = [ "network" "pulseaudio" "battery" "clock" ];
         
          "custom/os_logo" = {
-               format = " ";
-               tooltip = "Nixos";
+               format =  ""; # Logo NixOS din Nerd Fonts
+               tooltip =  "NixOS";
 	       on-click = "alacritty";
                  	 };
 
