@@ -181,7 +181,7 @@
      #custom-os_logo {
        font-size: 20px;
        padding: 0 7px;
-       color: #5277C3;
+       color: #6DAAF0;
 	 }
 
       #network {
