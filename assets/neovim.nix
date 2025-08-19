@@ -101,6 +101,7 @@
     rustc
     cargo
     
+    
     # LSP servers esențiale
     lua-language-server
     nil                   # Nix LSP
