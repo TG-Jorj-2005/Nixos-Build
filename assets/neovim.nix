@@ -120,7 +120,5 @@
     
     # Alte utilitare
     tree-sitter           # Pentru syntax highlighting
-    curl
-    wget
   ];
 }
