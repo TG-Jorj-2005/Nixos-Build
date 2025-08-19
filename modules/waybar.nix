@@ -163,7 +163,6 @@
       #network,
       #pulseaudio,
       #battery,
-      #os_logo,
       #clock {
         padding: 0 9px;
         margin: 0 3px;
@@ -179,6 +178,9 @@
         color: #cdd6f4;
 
       }
+      #os_logo {
+       font-size: 16px;
+         }
 
       #network {
         color: #89b4fa; 
