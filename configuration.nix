@@ -110,54 +110,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  (pkgs.neovim.override {
-  configure = {
-    customRC = '' 
-      lua << EOF
-      -- Bootstrap lazy.nvim
-      local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-      if not vim.loop.fs_stat(lazypath) then
-        vim.fn.system({
-          "git",
-          "clone",
-          "--filter=blob:none",
-          "https://github.com/folke/lazy.nvim.git",
-          "--branch=stable",
-          lazypath,
-        })
-      end
-      vim.opt.rtp:prepend(lazypath)
-
-      vim.g.mapleader = " "
-      vim.g.maplocalleader = "\\"
-
-      require("lazy").setup({
-        spec = {
-          { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-          { import = "lazyvim.plugins.extras.coding.copilot" },
-          { import = "lazyvim.plugins.extras.lang.typescript" },
-          { import = "lazyvim.plugins.extras.lang.json" },
-          { import = "lazyvim.plugins.extras.lang.python" },
-        },
-        defaults = {
-          lazy = false,
-          version = false,
-        },
-        checker = { enabled = true },
-        performance = {
-          rtp = {
-            disabled_plugins = {
-              "gzip", "matchit", "matchparen", "netrwPlugin",
-              "tarPlugin", "tohtml", "tutor", "zipPlugin",
-            },
-          },
-        },
-      })
-      require("lazyvim").setup()
-      EOF
-    '';
-      };
-    })
      wget
      wofi
      neovim
