@@ -79,7 +79,6 @@
   };
 
   programs.home-manager.enable = true;
-  { config, pkgs, ... }:
 
   programs.neovim = {
     enable = true;
