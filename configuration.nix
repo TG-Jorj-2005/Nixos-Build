@@ -15,16 +15,14 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   #Home-Manager
   
-    home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.jorj = {  # ← username-ul tău aici
-      imports = [
-        ./assets/neovim.nix  # ✅ CORECT - în secțiunea home-manager
-      ];
-      home.stateVersion = "25.05";
-    };
-  };
+home-manager.users.jorj = {
+  useGlobalPkgs = true;
+  useUserPackages = true;
+  home.stateVersion = "25.05";
+  extraConfig = ''
+    ${builtins.readFile ./assets/neovim.nix}
+  '';
+};
 
 
   #Greetd
