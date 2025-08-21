@@ -80,7 +80,6 @@
 
   programs.home-manager.enable = true;
 
- 
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -103,48 +102,8 @@
       vim.g.mapleader = " "
       vim.g.maplocalleader = "\\"
 
-      -- Permite scrierea oricărui fișier, chiar și cu permisiuni restrictive
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = function()
-          if vim.bo.buftype ~= '' and vim.bo.buftype ~= 'acwrite' then
-            -- Pentru buffer-uri speciale, nu încerca să scrii
-            vim.notify('Cannot write to special buffer', vim.log.levels.WARN)
-            return
-          else
-            -- Pentru fișiere normale, forțează scrierea dacă este necesar
-            vim.cmd('silent! write!')
-          end
-        end
-      })
-
-      -- Autocmd pentru a permite editarea oricărui fișier
-      vim.api.nvim_create_autocmd('BufEnter', {
-        callback = function()
-          -- Dezactivează protecția against write pentru fișiere readonly
-          vim.bo.modifiable = true
-        end
-      })
-
       -- Setări pentru a scrie orice fișier
-      vim.o.writeany = true       -- Permite scrierea chiar dacă fișierul este readonly
-      vim.o.backup = false        -- Dezactivează backup-urile care pot cauza probleme
-      vim.o.swapfile = false      -- Dezactivează fișierele swap
-
-      -- Mapping personalizat pentru scriere forțată
-      vim.keymap.set('n', '<leader>w', ':write!<CR>', { desc = 'Force write file' })
-      vim.keymap.set('n', '<leader>W', ':SudoWrite<CR>', { desc = 'Sudo write file' })
-
-      -- Comandă personalizată pentru scriere cu sudo
-      vim.api.nvim_create_user_command('SudoWrite', function()
-        local file = vim.fn.expand('%')
-        if file == '' then
-          vim.notify('No file name', vim.log.levels.ERROR)
-          return
-        end
-        vim.cmd('w !sudo tee > /dev/null %')
-        vim.cmd('e!')
-        vim.notify('File written with sudo: ' .. file, vim.log.levels.INFO)
-      end, { desc = 'Write file with sudo' })
+      vim.o.writeany = true
 
       require("lazy").setup({
         spec = {
@@ -171,6 +130,5 @@
       require("lazyvim").setup()
     '';
   };
-
 
 }
