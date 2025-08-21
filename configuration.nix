@@ -8,6 +8,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      ./assets/neovim.nix 
       ];
 
    
@@ -15,14 +16,13 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   #Home-Manager
   
-home-manager.users.jorj = {
-  useGlobalPkgs = true;
-  useUserPackages = true;
-  home.stateVersion = "25.05";
-  extraConfig = ''
-    ${builtins.readFile ./assets/neovim.nix}
-  '';
-};
+
+  home-manager.users.jorj = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    enableNeovim = true;      # variabilă pentru mkIf din modulul Neovim
+    home.stateVersion = "25.05";
+  };
 
 
   #Greetd
