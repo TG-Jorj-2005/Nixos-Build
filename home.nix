@@ -80,7 +80,7 @@
 
   programs.home-manager.enable = true;
 
-  programs.neovim = {
+rograms.neovim = {
     enable = true;
     defaultEditor = true;
     
@@ -102,8 +102,24 @@
       vim.g.mapleader = " "
       vim.g.maplocalleader = "\\"
 
-      -- Setări pentru a scrie orice fișier
+      -- Soluție pentru permisiuni: scriere forțată și comandă sudo
       vim.o.writeany = true
+
+      -- Comandă personalizată pentru scriere cu sudo
+      vim.api.nvim_create_user_command('SudoWrite', function()
+        local file = vim.fn.expand('%')
+        if file == '' then
+          vim.notify('No file name', vim.log.levels.ERROR)
+          return
+        end
+        vim.cmd('w !sudo tee > /dev/null %')
+        vim.cmd('e!')
+        vim.notify('File written with sudo: ' .. file, vim.log.levels.INFO)
+      end, { desc = 'Write file with sudo' })
+
+      -- Mapping pentru scriere forțată și sudo
+      vim.keymap.set('n', '<leader>w', ':write!<CR>', { desc = 'Force write file' })
+      vim.keymap.set('n', '<leader>W', ':SudoWrite<CR>', { desc = 'Sudo write file' })
 
       require("lazy").setup({
         spec = {
@@ -130,5 +146,4 @@
       require("lazyvim").setup()
     '';
   };
-
 }
