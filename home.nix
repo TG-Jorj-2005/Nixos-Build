@@ -80,6 +80,7 @@
 
   programs.home-manager.enable = true;
 
+ 
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -107,7 +108,7 @@
         callback = function()
           if vim.bo.buftype ~= '' and vim.bo.buftype ~= 'acwrite' then
             -- Pentru buffer-uri speciale, nu încerca să scrii
-            vim.notify("Cannot write to special buffer", vim.log.levels.WARN)
+            vim.notify('Cannot write to special buffer', vim.log.levels.WARN)
             return
           else
             -- Pentru fișiere normale, forțează scrierea dacă este necesar
@@ -137,12 +138,12 @@
       vim.api.nvim_create_user_command('SudoWrite', function()
         local file = vim.fn.expand('%')
         if file == '' then
-          vim.notify("No file name", vim.log.levels.ERROR)
+          vim.notify('No file name', vim.log.levels.ERROR)
           return
         end
         vim.cmd('w !sudo tee > /dev/null %')
         vim.cmd('e!')
-        vim.notify("File written with sudo: " .. file, vim.log.levels.INFO)
+        vim.notify('File written with sudo: ' .. file, vim.log.levels.INFO)
       end, { desc = 'Write file with sudo' })
 
       require("lazy").setup({
