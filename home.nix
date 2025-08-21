@@ -80,7 +80,7 @@
 
   programs.home-manager.enable = true;
 
-rograms.neovim = {
+  programs.neovim = {
     enable = true;
     defaultEditor = true;
     
