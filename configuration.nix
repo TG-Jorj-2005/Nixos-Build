@@ -12,6 +12,20 @@
    
    #Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  #Home-Manager
+  
+    home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.jorj = {  # ← username-ul tău aici
+      imports = [
+        ./neovim.nix  # ✅ CORECT - în secțiunea home-manager
+      ];
+      home.stateVersion = "25.05";
+    };
+  };
+
+
   #Greetd
    services.greetd = {
      enable = true;
