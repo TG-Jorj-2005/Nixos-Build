@@ -24,6 +24,7 @@ in
       inherit system;
       modules = [
          ./configuration.nix
+	 inputs.home-manager.nixosModules.default
       ];
     };
   };
