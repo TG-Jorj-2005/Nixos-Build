@@ -80,70 +80,70 @@
 
   programs.home-manager.enable = true;
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    
-    extraLuaConfig = ''
-      -- Bootstrap lazy.nvim
-      local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-      if not vim.loop.fs_stat(lazypath) then
-        vim.fn.system({
-          "git",
-          "clone",
-          "--filter=blob:none",
-          "https://github.com/folke/lazy.nvim.git",
-          "--branch=stable",
-          lazypath,
-        })
+ programs.neovim = {
+  enable = true;
+  defaultEditor = true;
+
+  extraLuaConfig = ''
+    -- Bootstrap lazy.nvim
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+    if not vim.loop.fs_stat(lazypath) then
+      vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+      })
+    end
+    vim.opt.rtp:prepend(lazypath)
+
+    vim.g.mapleader = " "
+    vim.g.maplocalleader = "\\"
+
+    -- Soluție pentru permisiuni: scriere forțată și comandă sudo
+    vim.o.writeany = true
+
+    -- Comandă personalizată pentru scriere cu sudo
+    vim.api.nvim_create_user_command("SudoWrite", function()
+      local file = vim.fn.expand("%")
+      if file == "" then
+        vim.notify("No file name", vim.log.levels.ERROR)
+        return
       end
-      vim.opt.rtp:prepend(lazypath)
+      vim.cmd("w !sudo tee > /dev/null %")
+      vim.cmd("e!")
+      vim.notify("File written with sudo: " .. file, vim.log.levels.INFO)
+    end, { desc = "Write file with sudo" })
 
-      vim.g.mapleader = " "
-      vim.g.maplocalleader = "\\"
+    -- Mapping pentru scriere forțată și sudo
+    vim.keymap.set("n", "<leader>w", ":write!<CR>", { desc = "Force write file" })
+    vim.keymap.set("n", "<leader>W", ":SudoWrite<CR>", { desc = "Sudo write file" })
 
-      -- Soluție pentru permisiuni: scriere forțată și comandă sudo
-      vim.o.writeany = true
-
-      -- Comandă personalizată pentru scriere cu sudo
-      vim.api.nvim_create_user_command('SudoWrite', function()
-        local file = vim.fn.expand('%')
-        if file == '' then
-          vim.notify('No file name', vim.log.levels.ERROR)
-          return
-        end
-        vim.cmd('w !sudo tee > /dev/null %')
-        vim.cmd('e!')
-        vim.notify('File written with sudo: ' .. file, vim.log.levels.INFO)
-      end, { desc = 'Write file with sudo' })
-
-      -- Mapping pentru scriere forțată și sudo
-      vim.keymap.set('n', '<leader>w', ':write!<CR>', { desc = 'Force write file' })
-      vim.keymap.set('n', '<leader>W', ':SudoWrite<CR>', { desc = 'Sudo write file' })
-
-      require("lazy").setup({
-        spec = {
-          { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-          { import = "lazyvim.plugins.extras.coding.copilot" },
-          { import = "lazyvim.plugins.extras.lang.typescript" },
-          { import = "lazyvim.plugins.extras.lang.json" },
-          { import = "lazyvim.plugins.extras.lang.python" },
-        },
-        defaults = {
-          lazy = false,
-          version = false,
-        },
-        checker = { enabled = true },
-        performance = {
-          rtp = {
-            disabled_plugins = {
-              "gzip", "matchit", "matchparen", "netrwPlugin",
-              "tarPlugin", "tohtml", "tutor", "zipPlugin",
-            },
+    require("lazy").setup({
+      spec = {
+        { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+        { import = "lazyvim.plugins.extras.coding.copilot" },
+        { import = "lazyvim.plugins.extras.lang.typescript" },
+        { import = "lazyvim.plugins.extras.lang.json" },
+        { import = "lazyvim.plugins.extras.lang.python" },
+      },
+      defaults = {
+        lazy = false,
+        version = false,
+      },
+      checker = { enabled = true },
+      performance = {
+        rtp = {
+          disabled_plugins = {
+            "gzip", "matchit", "matchparen", "netrwPlugin",
+            "tarPlugin", "tohtml", "tutor", "zipPlugin",
           },
         },
-      })
-      require("lazyvim").setup()
-    '';
-  };
+      },
+    })
+    require("lazyvim").setup()
+  '';
+};
 }
