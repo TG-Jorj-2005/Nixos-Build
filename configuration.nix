@@ -114,7 +114,6 @@
      wofi
      neovim
      dunst
-     flameshot
      starship
      catppuccin-gtk
      catppuccin-kvantum
