@@ -168,4 +168,9 @@
 	settings.auto-optimise-store = true;
       };
 
+      programs.neovim = {
+        enable = true;
+	defaultEditor = true;
+         };
+
 }
