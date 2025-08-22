@@ -14,7 +14,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   #Greetd
-   services.greetd = {
+    services.greetd = {
      enable = true;
       settings = {
        default_session = {
@@ -168,9 +168,5 @@
 	settings.auto-optimise-store = true;
       };
 
-      programs.neovim = {
-        enable = true;
-	defaultEditor = true;
-         };
 
 }
