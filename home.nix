@@ -74,7 +74,6 @@
   };
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
-     EDITOR = "nvim";
      GTK_THEME = "Catppuccin-Mocha-Standard-Blue-Dark";
   };
 
