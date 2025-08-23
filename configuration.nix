@@ -123,6 +123,7 @@
      git
      pyprland
      brave
+      zathura
      waybar
      rofi-wayland
   ];
