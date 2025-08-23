@@ -69,13 +69,14 @@
     nerd-fonts.hack
     spotify
     vscode
+    xpdf
   ];
 
   home.file = {
   };
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
-     GTK_THEME = "Catppuccin-Mocha-Standard-Blue-Dark";
+     GTK_THEME = "Catppuccin-Mocha";
   };
 
   programs.home-manager.enable = true;
