@@ -121,12 +121,15 @@
      papirus-icon-theme
      unzip
      git
-     xpdf
      pyprland
      brave
      waybar
      rofi-wayland
   ];
+   #Insecure Sesion 
+       nixpkgs.config.permittedInsecurePackages = [
+                "xpdf-4.05"
+              ];
    #Hyprland
    programs.hyprland = {
      enable = true;
