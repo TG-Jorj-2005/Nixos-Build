@@ -121,6 +121,7 @@
      papirus-icon-theme
      unzip
      git
+     xpdf
      pyprland
      brave
      waybar

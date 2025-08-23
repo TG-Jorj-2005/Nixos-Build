@@ -69,7 +69,6 @@
     nerd-fonts.hack
     spotify
     vscode
-    xpdf
   ];
 
   home.file = {
