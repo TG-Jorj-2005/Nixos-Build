@@ -90,20 +90,6 @@
     extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
     packages = with pkgs; [];
   };
-  security.sudo.wheelNeedsPassword = false;
-   
-  security.sudo.extraRules = [
-    {
-      users = [ "jorj" ];  # numele tău exact
-      commands = [
-        {
-          command = "ALL";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-    }
-  ]; 
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
