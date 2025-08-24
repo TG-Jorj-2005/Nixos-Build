@@ -38,9 +38,7 @@
             "8" = "📺";  # Video/Streaming
             "9" = "⚙️";  # Settings/System
             "10" = "📦"; # Miscellaneous
-            default = "📋";
-            active = "🔥";
-            urgent = "🚨";          };
+              };
         };
         
                 
@@ -145,11 +143,6 @@
       #workspaces button:hover {
         background-color: rgba(137, 180, 250, 0.2); 
         color: #89b4fa;
-      }
-
-      #workspaces button.active {
-        background-color: #89b4fa; 
-        color: #1e1e2e; 
       }
 
       #window,
