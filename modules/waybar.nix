@@ -5,109 +5,109 @@
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
-        height = 30;
-        output = [ "eDP-1" ];
-        spacing = 4;
-        margin-top = 5;
-        margin-left = 10;
-        margin-right = 10;
-        
-        modules-left = [ "custom/os_logo" "hyprland/workspaces"  ];
-        modules-center = [ "hyprland/window" ];
-        modules-right = [ "network" "pulseaudio" "battery" "clock" ];
-        
-         "custom/os_logo" = {
-               format =  ""; # Logo NixOS din Nerd Fonts
-               tooltip =  "NixOS";
-	       on-click = "alacritty";
-                 	 };
+        modules-left = [ "custom/launcher" "cpu" "memory" "custom/media" "tray" ];
+        modules-center = [ "river/tags" ];
+        modules-right = [ "custom/updates" "custom/wallpaper" "backlight" "pulseaudio" "clock" "battery" "custom/power" ];
 
-        "hyprland/workspaces" = {
-          disable-scroll = true;
-          all-outputs = true;
-          format = "{icon}";
-          format-icons = {
-            "1" = "💻";  # Terminal
-            "2" = "🌐";  # Browser
-            "3" = "⚡";  # Code/Development  
-            "4" = "📁";  # Files/Explorer
-            "5" = "🎵";  # Music/Media
-            "6" = "🎮";  # Games/Entertainment
-            "7" = "💬";  # Chat/Communication
-            "8" = "📺";  # Video/Streaming
-            "9" = "⚙️";  # Settings/System
-            "10" = "📦"; # Miscellaneous
-            default = "📋";
-            active = "🔥";
-            urgent = "🚨";          };
-        };
-        
-        
-        "hyprland/window" = {
-          format = "{}";
-          max-length = 50;
-          separate-outputs = true;
-        };
-        
-        "network" = {
-          format-wifi = " 📶 {essid} ({signalStrength}%)";
-          format-ethernet = " 🌐 {ipaddr}";
-          format-disconnected = " 🔗 Disconnected";
-          tooltip-format = " 📊 {ifname}: {ipaddr}/{cidr}";
-        };
-        
-        "pulseaudio" = {
+        pulseaudio = {
+          tooltip = false;
+          scroll-step = 5;
           format = "{icon} {volume}%";
-         format-bluetooth = "🎧 {icon} {volume}%";
-          format-bluetooth-muted = "🎧 🔇 Muted";
-          format-muted = "🔇 Muted";
-          format-source = "🎤 {volume}%";
-          format-source-muted = "🎤❌";
+          format-muted = "{icon} {volume}%";
+          on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
           format-icons = {
-            headphone = "🎧";
-            hands-free = "📞";
-            headset = "🎧";
-            phone = "📱";
-            portable = "🔊";
-            car = "🚗";
-            default = ["🔈" "🔉" "🔊"];
+            default = [ "" "" "" ];
           };
-          on-click = "pavucontrol";
-          on-click-right = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-	  };
-        
-        "battery" = {
-          interval = 10;
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon} {capacity}%";
-          format-charging = " ⚡ {capacity}%";
-          format-plugged = " 🔌 {capacity}%";
-          format-alt = "{icon} {time}";
-          format-icons =["🪫" "🔋" "🔋" "🔋" "🔋"];
-	  tooltip-format = "{timeTo}, {capacity}%";
         };
-        
-        "clock" = {
-          format = " 🕐 {:%H:%M}";
-          format-alt = " 📅 {:%Y-%m-%d %H:%M:%S}";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          calendar = {
-            mode = "year";
-            mode-mon-col = 3;
-            weeks-pos = "right";
-            on-scroll = 1;
-            on-click-right = "mode";
-            format = {
-              months = "<span color='#ffead3'><b>{}</b></span>";
-              days = "<span color='#ecc6d9'><b>{}</b></span>";
-              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
-            };
+
+        "river/tags" = {
+          num-tags = 6;
+        };
+
+        network = {
+          tooltip = false;
+          format-wifi = "  {essid}";
+          format-ethernet = "";
+        };
+
+        backlight = {
+          tooltip = false;
+          format = " {}%";
+          interval = 1;
+          on-scroll-up = "light -A 5";
+          on-scroll-down = "light -U 5";
+        };
+
+        battery = {
+          states = {
+            good = 95;
+            warning = 30;
+            critical = 20;
+          };
+          format = "{icon}  {capacity}%";
+          format-charging = " {capacity}%";
+          format-plugged = " {capacity}%";
+          format-alt = "{time} {icon}";
+          format-icons = [ "" "" "" "" "" ];
+        };
+
+        tray = {
+          icon-size = 18;
+          spacing = 10;
+        };
+
+        clock = {
+          format = "{: %I:%M %p   %d/%m/%Y}";
+        };
+
+        cpu = {
+          interval = 15;
+          format = " {}%";
+          max-length = 10;
+        };
+
+        memory = {
+          interval = 30;
+          format = " {}%";
+          max-length = 10;
+        };
+
+        "custom/media" = {
+          interval = 30;
+          format = "{icon} {}";
+          return-type = "json";
+          max-length = 20;
+          format-icons = {
+            spotify = " ";
+            default = " ";
+          };
+          escape = true;
+          exec = "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null";
+          on-click = "playerctl play-pause";
+        };
+
+        "custom/launcher" = {
+          format = " ";
+          on-click = "rofi -show drun";
+          on-click-right = "killall rofi";
+        };
+
+        "custom/power" = {
+          format = " ";
+          on-click = "bash ~/.config/rofi/leave/leave.sh";
+        };
+
+        "custom/updates" = {
+          format = "{} Update(s)";
+          exec = "checkupdates | wc -l";
+          exec-if = "[[ $(checkupdates | wc -l) != 0 ]]";
+          interval = 15;
+          on-click = "alacritty -e paru -Syu && notify-send 'The system has been updated'";
+        };
+
+        "custom/wallpaper" = {
+          format = " ";
+          on-click = "bash ~/.config/system_scripts/pkill_bc";
           };
         };
       };
@@ -115,94 +115,253 @@
     
      style = ''
       * {
-        border: none;
-        border-radius: 8;
-        font-family: "JetBrainsMono Nerd Font";
-        font-size: 12px;
-        min-height: 0;
-      }
+	border: none;
+	border-radius: 10;
+    font-family: "JetbrainsMono Nerd Font" ;
+	font-size: 15px;
+	min-height: 10px;
+}
 
-      window#waybar {
-        background-color: transparent; 
-        border-radius: 10px;
-        color: #cdd6f4; 
-        transition-property: background-color;
-        transition-duration: 0.5s;
-      }
+window#waybar {
+	background: transparent;
+}
 
-      #workspaces {
-        background-color: transparent;
-      }
+window#waybar.hidden {
+	opacity: 0.2;
+}
 
-      #workspaces button {
-        padding: 0 8px;
-        background-color: transparent;
-        color: #6c7086; 
-        border-radius: 8px;
-        transition: all 0.3s ease;
-      }
+#window {
+	margin-top: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 10px;
+	transition: none;
+    color: transparent;
+	background: transparent;
+}
+#tags {
+	margin-top: 6px;
+	margin-left: 12px;
+	font-size: 4px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	background: #161320;
+	transition: none;
+}
 
-      #workspaces button:hover {
-        background-color: rgba(137, 180, 250, 0.2); 
-        color: #89b4fa;
-      }
+#tags button {
+	transition: none;
+	color: #B5E8E0;
+	background: transparent;
+	font-size: 16px;
+	border-radius: 2px;
+}
 
-      #workspaces button.active {
-        background-color: #89b4fa; 
-        color: #1e1e2e; 
-      }
+#tags button.occupied {
+	transition: none;
+	color: #F28FAD;
+	background: transparent;
+	font-size: 4px;
+}
 
-      #window,
-      #network,
-      #pulseaudio,
-      #battery,
-      #clock {
-        padding: 0 9px;
-        margin: 0 3px;
-        background-color: #313244; 
-        border-radius: 8px;
-        color: #cdd6f4; 
-      }
-     #custom-os_logo {
-       font-size: 18px;
-       padding: 0 7px;
-       color: #6DAAF0;
-	 }
+#tags button.focused {
+	color: #ABE9B3;
+    border-top: 2px solid #ABE9B3;
+    border-bottom: 2px solid #ABE9B3;
+}
 
-      #network {
-        color: #89b4fa; 
-      }
+#tags button:hover {
+	transition: none;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	color: #FAE3B0;
+    border-color: #E8A2AF;
+    color: #E8A2AF;
+}
 
-      #network.disconnected {
-        background-color: #f38ba8; 
-        color: #1e1e2e;
-      }
+#tags button.focused:hover {
+    color: #E8A2AF;
+}
 
-      #pulseaudio {
-        color: #cba6f7; 
-      }
+#network {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #bd93f9;
+}
 
-      #pulseaudio.muted {
-        background-color: #6c7086; 
-        color: #45475a; 
-      }
+#pulseaudio {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #1A1826;
+	background: #FAE3B0;
+}
 
-      #battery {
-        color: #a6e3a1; 
-      }
+#battery {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #B5E8E0;
+}
 
-      #clock {
-        color: #74c7ec; /* Catppuccin Mocha sapphire */
-      }
+#battery.charging, #battery.plugged {
+	color: #161320;
+    background-color: #B5E8E0;
+}
 
-      
-      #network:hover,
-      #pulseaudio:hover,
-      #battery:hover,
-      #clock:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      }
-    '';
+#battery.critical:not(.charging) {
+    background-color: #B5E8E0;
+    color: #161320;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #BF616A;
+        color: #B5E8E0;
+    }
+}
+
+#backlight {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #F8BD96;
+}
+#clock {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #ABE9B3;
+	/*background: #1A1826;*/
+}
+
+#memory {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	margin-bottom: 0px;
+	padding-right: 10px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #DDB6F2;
+}
+#cpu {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	margin-bottom: 0px;
+	padding-right: 10px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #96CDFB;
+}
+
+#tray {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	margin-bottom: 0px;
+	padding-right: 10px;
+	border-radius: 10px;
+	transition: none;
+	color: #B5E8E0;
+	background: #161320;
+}
+
+#custom-launcher {
+	font-size: 24px;
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 5px;
+	border-radius: 10px;
+	transition: none;
+    color: #89DCEB;
+    background: #161320;
+}
+
+#custom-power {
+	font-size: 20px;
+	margin-top: 6px;
+	margin-left: 8px;
+	margin-right: 8px;
+	padding-left: 10px;
+	padding-right: 5px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #F28FAD;
+}
+
+#custom-wallpaper {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #C9CBFF;
+}
+
+#custom-updates {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #E8A2AF;
+}
+
+#custom-media {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #F2CDCD;
+} 
+'';
   };
     
 }
