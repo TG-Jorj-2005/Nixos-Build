@@ -362,7 +362,7 @@ window#waybar.hidden {
 	background: #F2CDCD;
 } 
 '';
-  };
+  
     
 }
 
