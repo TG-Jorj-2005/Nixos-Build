@@ -115,7 +115,7 @@
     noto-fonts-cjk-sans                                                                                       
     noto-fonts-emoji                                                                                     
     liberation_ttf
-    nerd-fonts.m+
+    nerd-fonts.lilex
     roboto-mono
     font-awesome
   ];
