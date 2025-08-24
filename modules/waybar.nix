@@ -130,9 +130,9 @@
       }
 
       window#waybar {
-        background-color: #313244; 
-        border-radius: 8px;
-        color: #cdd6f4;
+        background-color: transparent; 
+        border-radius: 10px;
+        color: #cdd6f4; 
         transition-property: background-color;
         transition-duration: 0.5s;
       }
@@ -143,7 +143,7 @@
 
       #workspaces button {
         padding: 0 8px;
-        background-color: #40405F;
+        background-color: transparent;
         color: #6c7086; 
         border-radius: 8px;
         transition: all 0.3s ease;
@@ -165,8 +165,8 @@
       #battery,
       #clock {
         padding: 0 9px;
-        margin: 0 1px;
-        background-color: #40405F; 
+        margin: 0 3px;
+        background-color: #313244; 
         border-radius: 8px;
         color: #cdd6f4; 
       }
