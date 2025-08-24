@@ -156,5 +156,8 @@
 	settings.auto-optimise-store = true;
       };
 
+    #Bluetooth
+    hardware.bluetooth.enable = true;
+
 
 }
