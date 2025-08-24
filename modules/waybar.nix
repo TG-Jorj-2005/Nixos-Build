@@ -145,7 +145,7 @@
         padding: 0 6px;
         background-color: #40405F;
         color: #6c7086; 
-        border-radius: 8px;
+        border-radius: 12px;
         transition: all 0.3s ease;
       }
 
@@ -167,7 +167,7 @@
         padding: 0 6px;
         margin: 0 1px;
         background-color: #40405F; 
-        border-radius: 8px;
+        border-radius: 12px;
         color: #cdd6f4; 
       }
       #taskbar {
