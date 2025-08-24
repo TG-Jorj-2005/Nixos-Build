@@ -109,6 +109,17 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  #Icons packages
+   fonts.packages = with pkgs; [                                                                          
+    noto-fonts                                                                                           
+    noto-fonts-cjk                                                                                       
+    noto-fonts-emoji                                                                                     
+    liberation_ttf
+    nerdfonts
+    roboto-mono
+    font-awesome
+  ];
+
   environment.systemPackages = with pkgs; [
      wget
      wofi
