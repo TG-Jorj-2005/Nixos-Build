@@ -4,6 +4,11 @@
     enable = true;
     settings = {
       mainBar = {
+       {
+  programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
         layer = "top";
         modules-left = [ "custom/launcher" "cpu" "memory" "custom/media" "tray" ];
         modules-center = [ "river/tags" ];
@@ -108,7 +113,7 @@
         "custom/wallpaper" = {
           format = " ";
           on-click = "bash ~/.config/system_scripts/pkill_bc";
-          };
+           };
         };
       };
     
