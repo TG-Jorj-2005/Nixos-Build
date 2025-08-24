@@ -2,11 +2,9 @@
 {
 home.packages = with pkgs;[
  starship           # Prompt pentru terminal rapid și personalizabil
- fuzzel             # Application launcher pentru Wayland (alternativă la rofi/dmenu)
- polkit_gnome  # Agent de autentificare pentru aplicații ce necesită privilegii admin
+ rofi-wayland              # Application launcher pentru Wayland (alternativă la rofi/dmenu) 
  nitch              # System information tool minimal (neofetch alternativ)
  wlr-randr          # Utilitar pentru configurarea monitoarelor în Wayland
- wtype              # Tool pentru simularea tastării în Wayland
  swww               # Wallpaper daemon pentru Wayland - schimbă fundalul desktop-ului
  ffmpeg             # Suite de tools pentru procesarea video/audio
  wl-clipboard       # Utilities pentru clipboard în Wayland (wl-copy, wl-paste)
@@ -23,10 +21,9 @@ home.packages = with pkgs;[
  pamixer            # PulseAudio mixer din linia de comandă
  grim               # Screenshot utility pentru Wayland
  slurp         # Utilitar pentru selectarea unei zone de pe ecran (folosit cu grim)
- nautilus
+ waybar
  btop
  alacritty
- rofi-wayland
  river
 
 ];

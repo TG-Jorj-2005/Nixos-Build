@@ -107,24 +107,17 @@
     roboto-mono
     font-awesome
   ];
-
+  #Pachete
   environment.systemPackages = with pkgs; [
-     wget
-     wofi
      neovim
      dunst
-     starship
      catppuccin-gtk
      catppuccin-kvantum
      catppuccin-cursors
      papirus-icon-theme
-     unzip
-     git
-     pyprland
-     brave
      zathura
-     waybar
-     rofi-wayland
+  
+     
   ];
    #Hyprland
    programs.hyprland = {
