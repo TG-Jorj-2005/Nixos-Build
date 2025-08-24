@@ -133,7 +133,7 @@
       }
 
       #workspaces button {
-        padding: 0 6px;
+        padding: 0 8px;
         background-color: transparent;
         color: #6c7086; 
         border-radius: 8px;
@@ -157,7 +157,7 @@
         color: #cdd6f4; 
       }
      #custom-os_logo {
-       font-size: 18px;
+       font-size: 20px;
        padding: 0 9px;
        background-color: #313244;
        color: #6DAAF0;
