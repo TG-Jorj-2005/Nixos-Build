@@ -157,11 +157,14 @@
       };
 
   #Sound
-     hardware.pulseaudio = {
+   security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
-    package = pkgs.pulseaudioFull;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
-  }; 
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
     #Bluetooth    
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
