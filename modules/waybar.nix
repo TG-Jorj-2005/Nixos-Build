@@ -18,7 +18,7 @@
         modules-right = [ "network" "pulseaudio" "battery" "clock" ];
         
          "custom/os_logo" = {
-               format =  " "; # Logo NixOS din Nerd Fonts
+               format =  ""; # Logo NixOS din Nerd Fonts
                tooltip =  "NixOS";
 	       on-click = "alacritty";
                  	 };
