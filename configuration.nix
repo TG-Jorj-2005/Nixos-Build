@@ -109,6 +109,7 @@
   ];
   #Pachete
   environment.systemPackages = with pkgs; [
+     emacsPackages.bluetooth
      neovim
      dunst
      zathura
