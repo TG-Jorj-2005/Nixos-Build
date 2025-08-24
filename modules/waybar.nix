@@ -143,7 +143,7 @@
 
       #workspaces button {
         padding: 0 8px;
-        background-color: transparent;
+        background-color: #CECDBB;
         color: #6c7086; 
         border-radius: 8px;
         transition: all 0.3s ease;
@@ -166,7 +166,7 @@
       #clock {
         padding: 0 9px;
         margin: 0 3px;
-        background-color: #313244; 
+        background-color: #CECDBB; 
         border-radius: 8px;
         color: #cdd6f4; 
       }
