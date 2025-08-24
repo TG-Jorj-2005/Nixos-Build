@@ -116,7 +116,7 @@
         border: none;
         border-radius: 8;
         font-family: "JetBrainsMono Nerd Font";
-        font-size: 12px;
+        font-size: 14px;
         min-height: 0;
       }
 
@@ -158,7 +158,7 @@
         color: #cdd6f4; 
       }
      #custom-os_logo {
-       font-size: 18px;
+       font-size: 20px;
        padding: 0 7px;
        color: #6DAAF0;
        background-color: transparent;
