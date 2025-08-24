@@ -157,13 +157,11 @@
       };
 
   #Sound
-   services.pipewire = {
+    hardware.pulseaudio = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-        };
+    package = pkgs.pulseaudioFull;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+  };
     
     #Bluetooth    
     hardware.bluetooth.enable = true;
