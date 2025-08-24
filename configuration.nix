@@ -90,9 +90,8 @@
     extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
     packages = with pkgs; [];
   };
+  # Sa nu mai am nevoie de parola la sudo
   security.sudo.wheelNeedsPassword = false;
-   
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
