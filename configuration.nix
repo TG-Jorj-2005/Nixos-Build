@@ -157,7 +157,11 @@
       };
 
   #Sound
-    
+     hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+  }; 
     #Bluetooth    
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
