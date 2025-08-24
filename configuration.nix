@@ -156,8 +156,19 @@
 	settings.auto-optimise-store = true;
       };
 
-    #Bluetooth
+  #Sound
+   services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+        };
+    
+    #Bluetooth    
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
-
+    hardware.bluetooth.powerOnBoot = true;
+    hardware.bluetooth.package = pkgs.bluez;
+ 
 }
