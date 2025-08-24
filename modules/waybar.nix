@@ -143,7 +143,7 @@
 
       #workspaces button {
         padding: 0 8px;
-        background-color: #CECDBB;
+        background-color: #40405F;
         color: #6c7086; 
         border-radius: 8px;
         transition: all 0.3s ease;
@@ -165,8 +165,8 @@
       #battery,
       #clock {
         padding: 0 9px;
-        margin: 0 3px;
-        background-color: #CECDBB; 
+        margin: 0 1px;
+        background-color: #40405F; 
         border-radius: 8px;
         color: #cdd6f4; 
       }
