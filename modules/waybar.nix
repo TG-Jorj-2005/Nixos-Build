@@ -13,15 +13,9 @@
         margin-left = 10;
         margin-right = 10;
         
-        modules-left = [ "custom/os_logo" "hyprland/workspaces" ];
+        modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "hyprland/window" ];
         modules-right = [ "network" "pulseaudio" "battery" "clock" ];
-        
-         "custom/os_logo" = {
-               format =  ""; # Logo NixOS din Nerd Fonts
-               tooltip =  "NixOS";
-	       on-click = "alacritty";
-                 	 };
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -157,13 +151,6 @@
         border-radius: 8px;
         color: #cdd6f4; 
       }
-     #custom-os_logo {
-       font-size: 20px;
-       padding: 0 7px;
-       color: #6DAAF0;
-       background-color: transparent;
-	 }
-
       #network {
         color: #89b4fa; 
       }
