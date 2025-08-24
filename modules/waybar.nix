@@ -142,7 +142,7 @@
       }
 
       #workspaces button {
-        padding: 0 8px;
+        padding: 0 6px;
         background-color: #40405F;
         color: #6c7086; 
         border-radius: 8px;
@@ -164,7 +164,7 @@
       #pulseaudio,
       #battery,
       #clock {
-        padding: 0 9px;
+        padding: 0 6px;
         margin: 0 1px;
         background-color: #40405F; 
         border-radius: 8px;
