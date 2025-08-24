@@ -18,7 +18,7 @@
         modules-right = [ "network" "pulseaudio" "battery" "clock" ];
         
          "custom/os_logo" = {
-               format =  "   "; # Logo NixOS din Nerd Fonts
+               format =  ""; # Logo NixOS din Nerd Fonts
                tooltip =  "NixOS";
 	       on-click = "alacritty";
                  	 };
@@ -116,7 +116,7 @@
         border: none;
         border-radius: 8;
         font-family: "JetBrainsMono Nerd Font";
-        font-size: 14px;
+        font-size: 12px;
         min-height: 0;
       }
 
@@ -129,7 +129,7 @@
       }
 
       #workspaces {
-        background-color: #313244;
+        background-color: transparent;
       }
 
       #workspaces button {
@@ -145,6 +145,7 @@
         color: #89b4fa;
       }
 
+
       #window,
       #network,
       #pulseaudio,
@@ -157,9 +158,8 @@
         color: #cdd6f4; 
       }
      #custom-os_logo {
-       font-size: 14px;
-       padding: 0 9px;
-       background-color: #313244;
+       font-size: 18px;
+       padding: 0 7px;
        color: #6DAAF0;
 	 }
 
