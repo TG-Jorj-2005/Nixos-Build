@@ -27,6 +27,8 @@ home.packages = with pkgs;[
  btop
  alacritty
  rofi-wayland
+ river
+
 ];
 wayland = {
  windowManager={
