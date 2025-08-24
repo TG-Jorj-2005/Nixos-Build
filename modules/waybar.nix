@@ -133,7 +133,7 @@
       }
 
       #workspaces button {
-        padding: 0 8px;
+        padding: 0 6px;
         background-color: transparent;
         color: #6c7086; 
         border-radius: 8px;
