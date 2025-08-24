@@ -109,7 +109,6 @@
   ];
   #Pachete
   environment.systemPackages = with pkgs; [
-     emacsPackages.bluetooth
      neovim
      dunst
      zathura
@@ -159,6 +158,6 @@
 
     #Bluetooth
     hardware.bluetooth.enable = true;
-
+    services.blueman.enable = true;
 
 }
