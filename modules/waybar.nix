@@ -4,11 +4,6 @@
     enable = true;
     settings = {
       mainBar = {
-       {
-  programs.waybar = {
-    enable = true;
-    settings = {
-      mainBar = {
         layer = "top";
         modules-left = [ "custom/launcher" "cpu" "memory" "custom/media" "tray" ];
         modules-center = [ "river/tags" ];
