@@ -130,9 +130,9 @@
       }
 
       window#waybar {
-        background-color: transparent; 
-        border-radius: 10px;
-        color: #cdd6f4; 
+        background-color: #313244; 
+        border-radius: 8px;
+        color: #cdd6f4;
         transition-property: background-color;
         transition-duration: 0.5s;
       }
