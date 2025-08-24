@@ -129,7 +129,7 @@
       }
 
       #workspaces {
-        background-color: transparent;
+        background-color: #313244;
       }
 
       #workspaces button {
