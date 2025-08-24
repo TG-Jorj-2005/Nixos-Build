@@ -13,7 +13,7 @@
         margin-left = 10;
         margin-right = 10;
         
-        modules-left = [ "custom/os_logo" "hyprland/workspaces" "wlr/taskbar" ];
+        modules-left = [ "custom/os_logo" "hyprland/workspaces"  ];
         modules-center = [ "hyprland/window" ];
         modules-right = [ "network" "pulseaudio" "battery" "clock" ];
         
@@ -43,13 +43,6 @@
             urgent = "🚨";          };
         };
         
-        "wlr/taskbar" = {
-          format = "{icon}";
-          icon-size = 18;
-          tooltip-format = "{title}";
-          on-click = "activate";
-          on-click-middle = "close";
-        };
         
         "hyprland/window" = {
           format = "{}";
@@ -169,14 +162,6 @@
         background-color: #313244; 
         border-radius: 8px;
         color: #cdd6f4; 
-      }
-      #taskbar {
-        padding:0 2px;
-        margin: 0 3px;
-        background-color: #313244; 
-        border-radius: 8px;
-        color: #cdd6f4;
-
       }
      #custom-os_logo {
        font-size: 18px;
