@@ -111,10 +111,6 @@
   environment.systemPackages = with pkgs; [
      neovim
      dunst
-     catppuccin-gtk
-     catppuccin-kvantum
-     catppuccin-cursors
-     papirus-icon-theme
      zathura
   
      
