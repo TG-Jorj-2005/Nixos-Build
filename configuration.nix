@@ -95,7 +95,16 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   #Agent Autentificare
-  security.polkit.enable = true;
+  security.polkit ={
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+          if (subject.isInGroup("users") && subject.local && subject.active) {
+              return polkit.Result.YES;
+          }
+      });
+    '';
+    };
   systemd.services.polkit.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
