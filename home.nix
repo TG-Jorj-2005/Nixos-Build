@@ -78,7 +78,7 @@
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
      GTK_THEME = "Catppuccin-Mocha";
-     EDITOR = "vscode";
+     EDITOR = lib.mkForce "vscode";
      TERMINAL = "alacritty";
   };
 
