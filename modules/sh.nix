@@ -46,7 +46,11 @@ enable = true;
     if [[ $- == *i* ]]; then
       nitch
     fi
+
+    export EDITOR="code"
+    export TERMINAL="alacritty"
    '';
+   
 };
 
 
