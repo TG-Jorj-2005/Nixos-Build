@@ -70,7 +70,6 @@
     nerd-fonts.fira-code  
     nerd-fonts.hack
     spotify
-    vscode
   ];
 
   home.file = {

@@ -113,6 +113,7 @@
      neovim
      dunst
      zathura
+     vscode
   
      
   ];
