@@ -38,11 +38,16 @@ programs.bash = {
 };
 programs.zsh = {
 enable = true;
- enableCompletion = true;
- autosuggestion.enable = true;
- syntaxHighlighting.enable = true;
-  shellAliases = alias;
-  initContent = ''
+
+enableCompletion = true;
+
+autosuggestion.enable = true;
+
+syntaxHighlighting.enable = true;
+
+shellAliases = alias;
+
+initContent = ''
     if [[ $- == *i* ]]; then
       nitch
     fi
@@ -50,7 +55,25 @@ enable = true;
     export EDITOR="code"
     export TERMINAL="alacritty"
    '';
-   
+   history = {
+      size = 10000;
+      save = 10000;
+      share = true;
+      ignoreDups = true;
+    };
+      oh-my-zsh = {
+      enable = true;
+      theme = "agnoster"; # funcționează bine cu Catppuccin
+      plugins = [ 
+        "git" 
+        "sudo" 
+        "history" 
+        "colored-man-pages"
+        "command-not-found"
+        "zsh-autosuggestions"
+        "zsh-syntax-highlighting"
+      ];
+    };
 };
 
 
