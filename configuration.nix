@@ -94,8 +94,9 @@
   security.sudo.wheelNeedsPassword = false;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  #Agent Autentificare
   security.polkit.enable = true;
-
+  systemd.services.polkit.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   #Icons packages
