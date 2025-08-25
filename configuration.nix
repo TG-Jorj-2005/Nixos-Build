@@ -111,7 +111,7 @@
   ];
   #Pachete
   environment.systemPackages = with pkgs; [
-     polkit
+      lxqt.lxqt-policykit
      neovim
      dunst
      zathura

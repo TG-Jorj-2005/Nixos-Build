@@ -46,6 +46,7 @@ wayland = {
 
 	#Auto-Start
 	exec-once = [
+  "lxqt-policykit-agent"
   "pypr"
 	"swww-daemon"
 	"waybar"
