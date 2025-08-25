@@ -110,6 +110,7 @@
   ];
   #Pachete
   environment.systemPackages = with pkgs; [
+     polkit
      neovim
      dunst
      zathura
