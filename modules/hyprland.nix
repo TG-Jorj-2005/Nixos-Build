@@ -169,7 +169,7 @@ wayland = {
         "SUPER, P, pseudo" # dwindle
         "SUPER, J, togglesplit" # dwindle
        	"SUPER, S,fullscreen,0"
-        
+        "SUPER, Z, fullscreen, 1"        
         # Move focus with mainMod + arrow keys
         "SUPER, left, movefocus, l"
         "SUPER, right, movefocus, r"
