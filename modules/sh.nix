@@ -16,11 +16,18 @@ fi'';
    hmn = "home-manager switch --flake .#jorj";
    nfu = "sudo nix flake update";
    all = ''
-   jrj
-   nrb
-   nfu
-   hmn
-   jrj
+      echo "🔄 Starting full system update..."
+      echo "📝 Committing changes..."
+      jrj
+      echo "🔧 Updating flake..."
+      nfu
+      echo "🏗️  Rebuilding NixOS..."
+      nrb
+      echo "🏠 Updating home-manager..."
+      hmn
+      echo "📝 Final commit..."
+      jrj
+      echo "✅ All updates completed!"
    '';
 
     };
