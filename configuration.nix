@@ -87,7 +87,7 @@
   users.users.jorj = {
     isNormalUser = true;
     description = "Tanase George";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
+    extraGroups = [ "networkmanager" "users" "wheel" "audio" "video" ];
     packages = with pkgs; [];
   };
   # Sa nu mai am nevoie de parola la sudo
