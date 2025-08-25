@@ -94,6 +94,7 @@
   security.sudo.wheelNeedsPassword = false;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  security.polkit.enalbe = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
