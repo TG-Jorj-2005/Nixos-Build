@@ -38,8 +38,15 @@ programs.bash = {
 };
 programs.zsh = {
 enable = true;
-shellAliases = alias;
-
+ enableCompletion = true;
+ autosuggestion.enable = true;
+ syntaxHighlighting.enable = true;
+  shellAliases = alias;
+  initExtra = ''
+    if [[ $- == *i* ]]; then
+      nitch
+    fi
+   '';
 };
 
 

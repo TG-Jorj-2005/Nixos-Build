@@ -149,7 +149,7 @@ in
       # Setări terminal
       terminal = {
         shell = {
-          program = "${pkgs.bash}/bin/bash";
+           program = "${pkgs.zsh}/bin/zsh";
           args = [ "--login" ];
         };
       };
