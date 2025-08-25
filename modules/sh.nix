@@ -42,7 +42,7 @@ enable = true;
  autosuggestion.enable = true;
  syntaxHighlighting.enable = true;
   shellAliases = alias;
-  initExtra = ''
+  initContent = ''
     if [[ $- == *i* ]]; then
       nitch
     fi
