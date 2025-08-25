@@ -46,7 +46,8 @@ wayland = {
 
 	#Auto-Start
 	exec-once = [
-	"swww-daemon" 
+  "pypr"
+	"swww-daemon"
 	"waybar"
 	"alacritty -t btop -e btop"
 	"swww img /home/jorj/Downloads/eye.gif --transition-type any" ];
