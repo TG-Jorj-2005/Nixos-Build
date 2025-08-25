@@ -27,7 +27,7 @@ fi'';
 in
 {
 programs.bash = {
- enable = true;
+ enable = false;
  shellAliases = alias;
  initExtra = ''
     if [[ $- == *i* ]]; then
