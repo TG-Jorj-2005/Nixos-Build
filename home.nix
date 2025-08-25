@@ -78,6 +78,8 @@
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
      GTK_THEME = "Catppuccin-Mocha";
+     EDITOR = "vscode";
+     TERMINAL = "alacritty";
   };
 
   programs.home-manager.enable = true;
