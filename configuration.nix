@@ -125,6 +125,7 @@
      dunst
      zathura
      vscode
+     raylib
   
      
   ];
