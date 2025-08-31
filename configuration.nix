@@ -126,6 +126,7 @@
      zathura
      vscode
      raylib
+     gcc
   
      
   ];
