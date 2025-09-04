@@ -10,7 +10,7 @@
    haskell.enable = true;
    python.enable = true;
    rust.enable = true;
-   gcc.enable = true ; 
+   
 
    extensions = with pkgs.vscode-extensions; [
       ms-python.python
@@ -18,7 +18,13 @@
       haskell.haskell
       rust-lang.rust-analyzer
       eamodio.gitlens
-    ];  
+    ];
+  
+  home.packages = [
+    pkgs.gcc
+    pkgs.gcc11   # sau versiunea dorită
+    pkgs.make
+  ];
     
       settings = {
       "editor.tabSize" = 2;
