@@ -33,14 +33,6 @@
       ms-vscode-remote.remote-containers
     ];
 
-    # Setări VSCode
-    settings = {
-      "editor.tabSize" = 2;
-      "editor.formatOnSave" = true;
-      "files.autoSave" = "afterDelay";
-      "workbench.colorTheme" = "Forest Night - Ethereal";
-      "terminal.integrated.shell.linux" = pkgs.zsh; # sau bash
-    };
 };
   # Pachete utile în PATH
   home.packages = [
