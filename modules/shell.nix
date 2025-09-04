@@ -1,249 +1,293 @@
-{config,pkgs,lib, ...}:
+{config, lib, pkgs, ... }:
 {
 pkgs.mkShell {
-  name = "raylib-dev-env";
-  
   buildInputs = with pkgs; [
-    # Compilatoare și tools
+    # C/C++ development
     gcc
     gdb
-    make
     cmake
+    make
     pkg-config
     
-    # Raylib dependencies
+    # Raylib ecosystem
     raylib
     raygui
     
-    # Development tools
-    git
+    # VSCode și extensii utile
+    vscode-with-extensions
     
-    # VSCode (opțional - comentează dacă ai probleme)
-    # vscode
+    # Tools utile pentru development
+    git
+    clang-tools  # pentru clangd, clang-format
+    valgrind     # memory debugging
+    strace       # system call tracing
   ];
   
+  # Script de setup care se rulează când intri în shell
   shellHook = ''
-    echo "=== Raylib C++ Development Environment ==="
-    echo "Project directory: $(pwd)"
+    # Culori pentru output
+    GREEN='\033[0;32m'
+    BLUE='\033[0;34m'
+    NC='\033[0m' # No Color
     
-    # Creează structura de directoare
+    echo -e "🚀 ${GREEN}C++ Development Environment cu Raylib${NC}"
+    echo -e "📁 Project directory: $(pwd)"
+    
+    # Creează directoarele necesare
     mkdir -p .vscode include src build
     
-    # Environment variables
-    export RAYLIB_INCLUDE="${pkgs.raylib}/include"
-    export RAYLIB_LIB="${pkgs.raylib}/lib" 
-    export RAYGUI_INCLUDE="${pkgs.raygui}/include"
+    # Setează environment variables pentru include paths
+    export RAYLIB_PATH="${pkgs.raylib}"
+    export RAYGUI_PATH="${pkgs.raygui}"
+    export C_INCLUDE_PATH="$RAYLIB_PATH/include:$RAYGUI_PATH/include:$C_INCLUDE_PATH"
+    export CPLUS_INCLUDE_PATH="$C_INCLUDE_PATH"
+    export LIBRARY_PATH="$RAYLIB_PATH/lib:$LIBRARY_PATH"
+    export PKG_CONFIG_PATH="$RAYLIB_PATH/lib/pkgconfig:$PKG_CONFIG_PATH"
     
-    # Fix pentru raygui enum warnings
+    # Fix raygui headers local
     if [ ! -f "./include/raygui.h" ]; then
-      echo "Fixing raygui enum warnings..."
-      cp "$RAYGUI_INCLUDE/raygui.h" ./include/
+      echo -e "🔧 ${BLUE}Copying și fixing raygui headers...${NC}"
+      cp $RAYGUI_PATH/include/raygui.h ./include/
       
-      # Aplică patch-urile pentru enum warnings
+      # Fix enum comparison warnings
       sed -i 's/property < DEFAULT_PROPS_COUNT/(int)property < (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
       sed -i 's/property >= DEFAULT_PROPS_COUNT/(int)property >= (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
       sed -i 's/property == DEFAULT_PROPS_COUNT/(int)property == (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
       
-      echo "raygui.h fixed successfully!"
+      echo -e "✅ ${GREEN}raygui.h fixed!${NC}"
     fi
     
-    # VSCode configuration
+    # Generează c_cpp_properties.json
     if [ ! -f ".vscode/c_cpp_properties.json" ]; then
-      echo "Creating VSCode configuration..."
-      
-cat > .vscode/c_cpp_properties.json << EOF
+      echo -e "⚙️  ${BLUE}Creating VSCode C++ configuration...${NC}"
+      cat > .vscode/c_cpp_properties.json << 'EOF'
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "Linux-Nix",
             "includePath": [
-                "\''${workspaceFolder}/**",
-                "\''${workspaceFolder}/include",
-                "$RAYLIB_INCLUDE"
+                "''${workspaceFolder}/**",
+                "''${workspaceFolder}/include",
+                "''${env:RAYLIB_PATH}/include",
+                "''${env:C_INCLUDE_PATH}"
             ],
-            "defines": [],
-            "compilerPath": "${pkgs.gcc}/bin/gcc",
+            "defines": [
+                "PLATFORM_DESKTOP"
+            ],
+            "compilerPath": "''${env:CC:-gcc}",
             "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "linux-gcc-x64"
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerArgs": [
+                "-Wno-enum-compare",
+                "-Wall",
+                "-Wextra"
+            ]
         }
     ],
     "version": 4
 }
 EOF
-
-cat > .vscode/settings.json << EOF
+    fi
+    
+    # Generează settings.json pentru VSCode
+    if [ ! -f ".vscode/settings.json" ]; then
+      cat > .vscode/settings.json << 'EOF'
 {
-    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve",
+    "C_Cpp.default.compilerArgs": [
+        "-Wno-enum-compare"
+    ],
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.cStandard": "c17",
+    "files.associations": {
+        "*.h": "c",
+        "*.hpp": "cpp"
+    },
     "problems.excludeFiles": [
         "**/nix/store/**"
-    ]
+    ],
+    "C_Cpp.loggingLevel": "Warning"
 }
 EOF
-
-cat > .vscode/tasks.json << EOF
+    fi
+    
+    # Generează tasks.json pentru build
+    if [ ! -f ".vscode/tasks.json" ]; then
+      cat > .vscode/tasks.json << 'EOF'
 {
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build-debug",
             "type": "shell",
-            "command": "make",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wno-enum-compare",
+                "-I./include",
+                "-I''${env:RAYLIB_PATH}/include",
+                "src/*.c",
+                "src/*.cpp",
+                "-L''${env:RAYLIB_PATH}/lib",
+                "-lraylib",
+                "-lGL",
+                "-lm",
+                "-lpthread",
+                "-ldl",
+                "-lrt",
+                "-lX11",
+                "-o",
+                "build/game"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
+            "problemMatcher": ["$gcc"],
             "presentation": {
                 "echo": true,
-                "reveal": "always"
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
             }
         },
         {
+            "label": "build-release",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-O2",
+                "-DNDEBUG",
+                "-Wall",
+                "-Wno-enum-compare",
+                "-I./include",
+                "-I''${env:RAYLIB_PATH}/include",
+                "src/*.c",
+                "src/*.cpp",
+                "-L''${env:RAYLIB_PATH}/lib",
+                "-lraylib",
+                "-lGL",
+                "-lm",
+                "-lpthread",
+                "-ldl",
+                "-lrt",
+                "-lX11",
+                "-o",
+                "build/game"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
             "label": "run",
-            "type": "shell", 
-            "command": "make",
-            "args": ["run"],
+            "type": "shell",
+            "command": "./build/game",
             "group": "test",
-            "dependsOn": "build"
+            "dependsOn": "build-debug"
         }
     ]
 }
 EOF
     fi
     
-    # Makefile simplu și funcțional
+    # Generează Makefile simplu
     if [ ! -f "Makefile" ]; then
-cat > Makefile << 'EOF'
-# Makefile pentru Raylib + Raygui
+      cat > Makefile << 'EOF'
+# Makefile pentru proiecte Raylib
 CC = gcc
-CFLAGS = -Wall -Wextra -Wno-enum-compare -std=c17 -g
-INCLUDES = -I./include -I$(RAYLIB_INCLUDE)
-LIBS = -L$(RAYLIB_LIB) -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+CFLAGS = -Wall -Wno-enum-compare -std=c17
+CPPFLAGS = -I./include -I$(RAYLIB_PATH)/include
+LDFLAGS = -L$(RAYLIB_PATH)/lib
+LDLIBS = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
+# Directoare
 SRCDIR = src
 BUILDDIR = build
-SOURCES = $(wildcard $(SRCDIR)/*.c)
+SOURCES = $(wildcard $(SRCDIR)/*.c) $(wildcard $(SRCDIR)/*.cpp)
 TARGET = $(BUILDDIR)/game
 
-.PHONY: all build run clean template help
+# Build debug
+debug: CFLAGS += -g -DDEBUG
+debug: $(TARGET)
 
-all: build
-
-build: $(TARGET)
+# Build release  
+release: CFLAGS += -O2 -DNDEBUG
+release: $(TARGET)
 
 $(TARGET): $(SOURCES) | $(BUILDDIR)
-	$(CC) $(CFLAGS) $(INCLUDES) $(SOURCES) $(LIBS) -o $(TARGET)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(SOURCES) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
-run: $(TARGET)
-	cd $(BUILDDIR) && ./game
-
-clean:
-	rm -rf $(BUILDDIR)
-
+# Template pentru main.c
 template:
 	@if [ ! -f "$(SRCDIR)/main.c" ]; then \
 		echo "Creating template main.c..."; \
-		cat > $(SRCDIR)/main.c << 'TEMPLATE_END'
+		cat > $(SRCDIR)/main.c << 'TEMPLATE'
 #include <raylib.h>
-
-// Important: Define RAYGUI_IMPLEMENTATION before including raygui.h
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 
-int main(void)
-{
-    // Initialization
+int main(void) {
     const int screenWidth = 800;
     const int screenHeight = 450;
     
     InitWindow(screenWidth, screenHeight, "Raylib + Raygui Template");
     SetTargetFPS(60);
     
-    bool showMessageBox = false;
-    
-    // Main game loop
-    while (!WindowShouldClose())
-    {
-        // Update
-        // Add your update logic here
-        
-        // Draw
+    while (!WindowShouldClose()) {
         BeginDrawing();
-        
         ClearBackground(RAYWHITE);
         
-        DrawText("Hello, Raylib + Raygui World!", 190, 100, 20, LIGHTGRAY);
-        DrawText("Press the button below!", 240, 150, 16, GRAY);
+        DrawText("Hello, Raylib + Raygui!", 190, 200, 20, LIGHTGRAY);
         
-        // Simple button
-        if (GuiButton((Rectangle){ 300, 200, 120, 30 }, "Click Me!"))
-        {
-            showMessageBox = true;
-        }
-        
-        // Simple checkbox
-        static bool checkBoxChecked = false;
-        GuiCheckBox((Rectangle){ 300, 250, 15, 15 }, "Enable something", &checkBoxChecked);
-        
-        // Simple slider
-        static float sliderValue = 50.0f;
-        GuiSlider((Rectangle){ 300, 290, 120, 20 }, "Min", "Max", &sliderValue, 0.0f, 100.0f);
-        DrawText(TextFormat("Value: %.1f", sliderValue), 300, 320, 16, DARKGRAY);
-        
-        // Message box
-        if (showMessageBox)
-        {
-            int result = GuiMessageBox((Rectangle){ 85, 70, 250, 100 }, 
-                                     "#191#Message Box", 
-                                     "Hi! This is a message box.", 
-                                     "Nice;Cool");
-            if (result >= 0) showMessageBox = false;
+        if (GuiButton((Rectangle){300, 250, 100, 30}, "Click Me!")) {
+            // Button clicked
         }
         
         EndDrawing();
     }
     
-    // De-Initialization
     CloseWindow();
-    
     return 0;
 }
-TEMPLATE_END
-		echo "Template created in $(SRCDIR)/main.c"; \
-	else \
-		echo "main.c already exists!"; \
+TEMPLATE
 	fi
 
-help:
-	@echo "Available commands:"
-	@echo "  make build    - Compile the project"
-	@echo "  make run      - Build and run the project"
-	@echo "  make clean    - Remove build files"
-	@echo "  make template - Create a template main.c file"
-	@echo "  make help     - Show this help message"
+run: debug
+	./$(TARGET)
+
+clean:
+	rm -rf $(BUILDDIR)
+
+.PHONY: debug release run clean template
 EOF
     fi
     
-    # Creează template dacă nu există fișiere în src/
-    if [ ! -f "src/main.c" ]; then
+    # Creează template dacă nu există fișiere sursă
+    if [ ! -f "src/main.c" ] && [ ! -f "src/main.cpp" ]; then
       make template
     fi
     
+    echo -e "✅ ${GREEN}Setup complet!${NC}"
+    echo -e "📝 Comenzi disponibile:"
+    echo -e "  ${BLUE}make debug${NC}   - Build debug"
+    echo -e "  ${BLUE}make release${NC} - Build release" 
+    echo -e "  ${BLUE}make run${NC}     - Build și run"
+    echo -e "  ${BLUE}make clean${NC}   - Șterge build files"
+    echo -e "  ${BLUE}code .${NC}       - Deschide VSCode"
     echo ""
-    echo "=== Setup Complete! ==="
-    echo "Available commands:"
-    echo "  make run      - Build and run your project"
-    echo "  make clean    - Clean build files"
-    echo "  code .        - Open VSCode (if installed)"
-    echo ""
-    echo "Your project structure:"
-    echo "  src/          - Source files (.c)"
-    echo "  include/      - Fixed raygui.h header"
-    echo "  build/        - Compiled binaries"
-    echo "  .vscode/      - VSCode configuration"
-    echo ""
+    echo -e "🔗 Include paths configurate:"
+    echo -e "  Raylib: $RAYLIB_PATH/include"
+    echo -e "  Raygui: ./include (fixed version)"
   '';
+  
+  # Variabile de environment permanente
+  shellAttributes = {
+    CC = "gcc";
+    CXX = "g++";
+  };
 }
