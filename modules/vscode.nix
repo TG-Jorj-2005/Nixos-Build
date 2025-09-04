@@ -6,10 +6,6 @@
     enable = true;
     package = [ pkgs.vscode pkgs.vscodium ];
 
-    # Limbaje
-    haskell.enable = true;
-    python.enable = true;
-    rust.enable = true;
 
     # Extensii utile
     extensions = with pkgs.vscode-extensions; [
