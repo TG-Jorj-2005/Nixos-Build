@@ -128,7 +128,7 @@
      raylib
      gcc
      jdk
-     
+     raygui
   ];
    #Hyprland
    programs.hyprland = {
