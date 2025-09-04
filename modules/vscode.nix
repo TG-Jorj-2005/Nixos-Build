@@ -46,7 +46,7 @@
       "workbench.colorTheme" = "Forest Night - Ethereal";
       "terminal.integrated.shell.linux" = pkgs.zsh; # sau bash
     };
-
+};
   # Pachete utile în PATH
   home.packages = [
     pkgs.gcc
