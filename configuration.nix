@@ -194,11 +194,12 @@
     hardware.bluetooth.powerOnBoot = true;
     hardware.bluetooth.package = pkgs.bluez;
    #Ollama
-   services.ollama = {
-      enable = true;
-      acceleration = "cuda";
-    };
-    systemd.services."ollama-pull-dolphin" = {
+    services.ollama = {
+              enable = true;
+              acceleration = "cuda"; # sau "rocm" / "none"
+            };
+
+            systemd.services."ollama-pull-dolphin" = {
               description = "Pull Dolphin Mistral model";
               after = [ "ollama.service" ];
               wants = [ "ollama.service" ];
