@@ -34,15 +34,14 @@
 };
   # Pachete utile în PATH
   home.packages = [
-    pkgs.gcc
-    pkgs.gnumake
     pkgs.python310Full
-    pkgs.rustc
-    pkgs.cargo
     pkgs.nodejs
-    pkgs.git
     pkgs.zsh
     pkgs.cmake
+    pkgs.gcc
+    pkgs.gnumake
+    pkgs.raylib
+    pkgs.libX11
   ];
 
 }
