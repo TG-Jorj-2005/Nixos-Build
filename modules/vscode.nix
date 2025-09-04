@@ -26,7 +26,6 @@
       eamodio.gitlens
 
       # Productivity
-      ms-vscode.vscode-typescript-next
       esbenp.prettier-vscode
       ms-azuretools.vscode-docker
       ms-vscode-remote.remote-containers
