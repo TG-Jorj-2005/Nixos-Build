@@ -130,6 +130,13 @@
      jdk
      raygui
      libGL
+      libGLU
+    xorg.libX11
+    xorg.libXrandr
+    xorg.libXi
+    xorg.libXcursor
+    xorg.libXinerama
+    pkg-config
   ];
    #Hyprland
    programs.hyprland = {
