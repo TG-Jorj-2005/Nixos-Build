@@ -205,14 +205,8 @@
               wants = [ "ollama.service" ];
               serviceConfig = {
                 ExecStart = "${pkgs.ollama}/bin/ollama pull dolphin-mistral:latest";
-                User = "root";
+                User = "jorj";
               };
               wantedBy = [ "multi-user.target" ];
             };
-          })
-        ];
-      };
-    };
-   
- 
 }
