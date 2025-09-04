@@ -45,8 +45,8 @@
   ];
    home.sessionVariables = {
     LIBRARY_PATH = "${pkgs.libx11}/lib:${pkgs.libGL}/lib:$LIBRARY_PATH";
-    LD_LIBRARY_PATH = "${pkgs.libX11}/lib:${pkgs.libGL}/lib:$LD_LIBRARY_PATH";
-    CPATH = "${pkgs.libX11}/include:${pkgs.libGL}/include:$CPATH";
+    LD_LIBRARY_PATH = "${pkgs.libx11}/lib:${pkgs.libGL}/lib:$LD_LIBRARY_PATH";
+    CPATH = "${pkgs.libx11}/include:${pkgs.libGL}/include:$CPATH";
   };
 
 }
