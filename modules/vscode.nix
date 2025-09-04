@@ -4,7 +4,7 @@
   # VSCode și setările sale
   programs.vscode = {
     enable = true;
-    package = [ pkgs.vscode ];
+    package =  pkgs.vscode;
 
 
     # Extensii utile
