@@ -1,3 +1,4 @@
+{config,pkgs,lib, ...}:
 let
   # Importă nixpkgs într-un mod compatibil
   pkgs = import <nixpkgs> { };
