@@ -130,7 +130,7 @@
      jdk
      raygui
     xorg.libX11
-    xorg.libGL
+    libGL
     xorg.libXcursor
     xorg.libXrandr
     xorg.libXi
