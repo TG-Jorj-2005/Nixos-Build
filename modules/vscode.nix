@@ -20,11 +20,6 @@
       eamodio.gitlens
     ];
   
-  home.packages = [
-    pkgs.gcc
-    pkgs.gcc11   # sau versiunea dorită
-    pkgs.make
-  ];
     
       settings = {
       "editor.tabSize" = 2;
