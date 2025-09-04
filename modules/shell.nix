@@ -6,7 +6,6 @@
       gcc
       gdb
       cmake
-      make
       pkg-config
       
       # Raylib ecosystem
