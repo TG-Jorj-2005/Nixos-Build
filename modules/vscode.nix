@@ -6,7 +6,6 @@
    
    package = [ pkgs.vscode pkgs.vscodium ];
    
-   defaultEditor = true;
    
    haskell.enable = true;
    python.enable = true;
