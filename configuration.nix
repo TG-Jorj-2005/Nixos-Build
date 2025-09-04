@@ -125,6 +125,15 @@
      dunst
      zathura
      pkg-config
+     gnumake
+     binutils
+     gmp
+     mpfr
+     mpc
+     isl
+     flex
+     bison
+     texinfo
   ];
    #Hyprland
    programs.hyprland = {
