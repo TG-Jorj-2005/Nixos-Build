@@ -8,7 +8,7 @@
 
 
     # Extensii utile
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       # Python
       ms-python.python
       ms-toolsai.jupyter
