@@ -272,13 +272,13 @@ EOF
       make template
     fi
     
-    echo -e "✅ ${GREEN}Setup complet!${NC}"
+    echo -e "✅ ''${GREEN}Setup complet!''${NC}"
     echo -e "📝 Comenzi disponibile:"
-    echo -e "  ${BLUE}make debug${NC}   - Build debug"
-    echo -e "  ${BLUE}make release${NC} - Build release" 
-    echo -e "  ${BLUE}make run${NC}     - Build și run"
-    echo -e "  ${BLUE}make clean${NC}   - Șterge build files"
-    echo -e "  ${BLUE}code .${NC}       - Deschide VSCode"
+    echo -e "  ''${BLUE}make debug''${NC}   - Build debug"
+    echo -e "  ''${BLUE}make release''${NC} - Build release" 
+    echo -e "  ''${BLUE}make run''${NC}     - Build și run"
+    echo -e "  ''${BLUE}make clean''${NC}   - Șterge build files"
+    echo -e "  ''${BLUE}code .''${NC}       - Deschide VSCode"
     echo ""
     echo -e "🔗 Include paths configurate:"
     echo -e "  Raylib: $RAYLIB_PATH/include"
