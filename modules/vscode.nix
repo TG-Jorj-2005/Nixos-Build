@@ -1,33 +1,64 @@
-{config, pkgs, lib, ...}:
+{ config, pkgs, lib, ... }:
+
 {
+  # VSCode și setările sale
+  programs.vscode = {
+    enable = true;
+    package = [ pkgs.vscode pkgs.vscodium ];
+    defaultEditor = true;
 
- programs.vscode = {
-   enable = true;
-   
-   package = [ pkgs.vscode pkgs.vscodium ];
-   
-   
-   haskell.enable = true;
-   
+    # Limbaje
+    haskell.enable = true;
+    python.enable = true;
+    rust.enable = true;
 
-   extensions = with pkgs.vscode-extensions; [
+    # Extensii utile
+    extensions = with pkgs.vscode-extensions; [
+      # Python
       ms-python.python
-      ms-vscode.cpptools
-      haskell.haskell
+      ms-toolsai.jupyter
+
+      # Rust
       rust-lang.rust-analyzer
+
+      # Haskell
+      haskell.haskell
+
+      # C/C++
+      ms-vscode.cpptools
+
+      # Git / Version control
       eamodio.gitlens
+      GitHub.vscode-pull-request-github
+
+      # Productivity
+      ms-vscode.vscode-typescript-next
+      esbenp.prettier-vscode
+      ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-containers
     ];
-  
-    
-      settings = {
+
+    # Setări VSCode
+    settings = {
       "editor.tabSize" = 2;
       "editor.formatOnSave" = true;
       "files.autoSave" = "afterDelay";
       "workbench.colorTheme" = "Forest Night - Ethereal";
+      "terminal.integrated.shell.linux" = pkgs.zsh; # sau bash
     };
 
-    };
+  # Pachete utile în PATH
+  home.packages = [
+    pkgs.gcc
+    pkgs.gnumake
+    pkgs.python310Full
+    pkgs.rustc
+    pkgs.cargo
+    pkgs.nodejs
+    pkgs.git
+    pkgs.zsh
+    pkgs.cmake
+  ];
 
+}
 
-    
-  }
