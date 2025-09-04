@@ -36,12 +36,6 @@ in
 programs.bash = {
  enable = false;
  shellAliases = alias;
- initExtra = ''
-    if [[ $- == *i* ]]; then
-      nitch
-    fi
-  '';
-
 };
 programs.zsh = {
 enable = true;
