@@ -41,7 +41,7 @@
     pkgs.gcc
     pkgs.gnumake
     pkgs.raylib
-    pkgs.libX11
+    pkgs.libx11
   ];
 
 }
