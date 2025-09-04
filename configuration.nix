@@ -127,7 +127,7 @@
      vscode
      raylib
      gcc
-  
+     jdk
      
   ];
    #Hyprland
