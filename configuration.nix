@@ -120,22 +120,11 @@
   ];
   #Pachete
   environment.systemPackages = with pkgs; [
-      lxqt.lxqt-policykit
+     lxqt.lxqt-policykit
      neovim
      dunst
      zathura
-     vscode
-     raylib
-     gcc
-     jdk
-     raygui
-    xorg.libX11
-    libGL
-    xorg.libXcursor
-    xorg.libXrandr
-    xorg.libXi
-    gcc
-    pkg-config
+     pkg-config
   ];
    #Hyprland
    programs.hyprland = {
