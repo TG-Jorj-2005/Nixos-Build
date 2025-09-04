@@ -8,8 +8,6 @@
    
    
    haskell.enable = true;
-   python.enable = true;
-   rust.enable = true;
    
 
    extensions = with pkgs.vscode-extensions; [
