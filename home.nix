@@ -2,6 +2,7 @@
 
 {
   imports = [ ./modules/sh.nix
+              ./modules/shell.nix
               ./modules/hyprland.nix
 	      ./modules/git.nix
 	      ./modules/starhip.nix
