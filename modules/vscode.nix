@@ -24,7 +24,6 @@
 
       # Git / Version control
       eamodio.gitlens
-      GitHub.vscode-pull-request-github
 
       # Productivity
       ms-vscode.vscode-typescript-next
