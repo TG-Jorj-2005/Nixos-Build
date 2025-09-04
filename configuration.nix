@@ -129,6 +129,7 @@
      gcc
      jdk
      raygui
+     libGL
   ];
    #Hyprland
    programs.hyprland = {
