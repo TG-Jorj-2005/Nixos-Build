@@ -1,66 +1,61 @@
 {config, lib, pkgs, ... }:
 {
-pkgs.mkShell {
-  buildInputs = with pkgs; [
-    # C/C++ development
-    gcc
-    gdb
-    cmake
-    make
-    pkg-config
-    
-    # Raylib ecosystem
-    raylib
-    raygui
-    
-    # VSCode și extensii utile
-    vscode-with-extensions
-    
-    # Tools utile pentru development
-    git
-    clang-tools  # pentru clangd, clang-format
-    valgrind     # memory debugging
-    strace       # system call tracing
-  ];
-  
-  # Script de setup care se rulează când intri în shell
-  shellHook = ''
-    # Culori pentru output
-    GREEN='\033[0;32m'
-    BLUE='\033[0;34m'
-    NC='\033[0m' # No Color
-    
-    echo -e "🚀 ${GREEN}C++ Development Environment cu Raylib${NC}"
-    echo -e "📁 Project directory: $(pwd)"
-    
-    # Creează directoarele necesare
-    mkdir -p .vscode include src build
-    
-    # Setează environment variables pentru include paths
-    export RAYLIB_PATH="${pkgs.raylib}"
-    export RAYGUI_PATH="${pkgs.raygui}"
-    export C_INCLUDE_PATH="$RAYLIB_PATH/include:$RAYGUI_PATH/include:$C_INCLUDE_PATH"
-    export CPLUS_INCLUDE_PATH="$C_INCLUDE_PATH"
-    export LIBRARY_PATH="$RAYLIB_PATH/lib:$LIBRARY_PATH"
-    export PKG_CONFIG_PATH="$RAYLIB_PATH/lib/pkgconfig:$PKG_CONFIG_PATH"
-    
-    # Fix raygui headers local
-    if [ ! -f "./include/raygui.h" ]; then
-      echo -e "🔧 ${BLUE}Copying și fixing raygui headers...${NC}"
-      cp $RAYGUI_PATH/include/raygui.h ./include/
+  pkgs.mkShell = {
+    buildInputs = with pkgs; [
+      # C/C++ development
+      gcc
+      gdb
+      cmake
+      make
+      pkg-config
       
-      # Fix enum comparison warnings
-      sed -i 's/property < DEFAULT_PROPS_COUNT/(int)property < (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
-      sed -i 's/property >= DEFAULT_PROPS_COUNT/(int)property >= (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
-      sed -i 's/property == DEFAULT_PROPS_COUNT/(int)property == (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
+      # Raylib ecosystem
+      raylib
+      raygui
       
-      echo -e "✅ ${GREEN}raygui.h fixed!${NC}"
-    fi
+      # VSCode și extensii utile
+      vscode-with-extensions
+      
+      # Tools utile pentru development
+      git
+      clang-tools  # pentru clangd, clang-format
+      valgrind     # memory debugging
+      strace       # system call tracing
+    ];
     
-    # Generează c_cpp_properties.json
-    if [ ! -f ".vscode/c_cpp_properties.json" ]; then
-      echo -e "⚙️  ${BLUE}Creating VSCode C++ configuration...${NC}"
-      cat > .vscode/c_cpp_properties.json << 'EOF'
+    # Script de setup care se rulează când intri în shell
+    shellHook = ''
+      echo "C++ Development Environment cu Raylib"
+      echo "Project directory: $(pwd)"
+      
+      # Creează directoarele necesare
+      mkdir -p .vscode include src build
+      
+      # Setează environment variables pentru include paths
+      export RAYLIB_PATH="${pkgs.raylib}"
+      export RAYGUI_PATH="${pkgs.raygui}"
+      export C_INCLUDE_PATH="$RAYLIB_PATH/include:$RAYGUI_PATH/include:$C_INCLUDE_PATH"
+      export CPLUS_INCLUDE_PATH="$C_INCLUDE_PATH"
+      export LIBRARY_PATH="$RAYLIB_PATH/lib:$LIBRARY_PATH"
+      export PKG_CONFIG_PATH="$RAYLIB_PATH/lib/pkgconfig:$PKG_CONFIG_PATH"
+      
+      # Fix raygui headers local
+      if [ ! -f "./include/raygui.h" ]; then
+        echo "Copying și fixing raygui headers..."
+        cp $RAYGUI_PATH/include/raygui.h ./include/
+        
+        # Fix enum comparison warnings
+        sed -i 's/property < DEFAULT_PROPS_COUNT/(int)property < (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
+        sed -i 's/property >= DEFAULT_PROPS_COUNT/(int)property >= (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
+        sed -i 's/property == DEFAULT_PROPS_COUNT/(int)property == (int)DEFAULT_PROPS_COUNT/g' ./include/raygui.h
+        
+        echo "raygui.h fixed!"
+      fi
+      
+      # Generează c_cpp_properties.json
+      if [ ! -f ".vscode/c_cpp_properties.json" ]; then
+        echo "Creating VSCode C++ configuration..."
+        cat > .vscode/c_cpp_properties.json << 'EOF'
 {
     "configurations": [
         {
@@ -88,11 +83,11 @@ pkgs.mkShell {
     "version": 4
 }
 EOF
-    fi
-    
-    # Generează settings.json pentru VSCode
-    if [ ! -f ".vscode/settings.json" ]; then
-      cat > .vscode/settings.json << 'EOF'
+      fi
+      
+      # Generează settings.json pentru VSCode
+      if [ ! -f ".vscode/settings.json" ]; then
+        cat > .vscode/settings.json << 'EOF'
 {
     "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve",
     "C_Cpp.default.compilerArgs": [
@@ -110,11 +105,11 @@ EOF
     "C_Cpp.loggingLevel": "Warning"
 }
 EOF
-    fi
-    
-    # Generează tasks.json pentru build
-    if [ ! -f ".vscode/tasks.json" ]; then
-      cat > .vscode/tasks.json << 'EOF'
+      fi
+      
+      # Generează tasks.json pentru build
+      if [ ! -f ".vscode/tasks.json" ]; then
+        cat > .vscode/tasks.json << 'EOF'
 {
     "version": "2.0.0",
     "tasks": [
@@ -190,11 +185,11 @@ EOF
     ]
 }
 EOF
-    fi
-    
-    # Generează Makefile simplu
-    if [ ! -f "Makefile" ]; then
-      cat > Makefile << 'EOF'
+      fi
+      
+      # Generează Makefile simplu
+      if [ ! -f "Makefile" ]; then
+        cat > Makefile << 'EOF'
 # Makefile pentru proiecte Raylib
 CC = gcc
 CFLAGS = -Wall -Wno-enum-compare -std=c17
@@ -265,29 +260,31 @@ clean:
 
 .PHONY: debug release run clean template
 EOF
-    fi
+      fi
+      
+      # Creează template dacă nu există fișiere sursă
+      if [ ! -f "src/main.c" ] && [ ! -f "src/main.cpp" ]; then
+        make template
+      fi
+      
+      echo "Setup complet!"
+      echo "Comenzi disponibile:"
+      echo "  make debug    - Build debug"
+      echo "  make release  - Build release"
+      echo "  make run      - Build și run"
+      echo "  make clean    - Șterge build files"
+      echo "  code .        - Deschide VSCode"
+      echo ""
+      echo "Include paths configurate:"
+      echo "  Raylib: $RAYLIB_PATH/include"
+      echo "  Raygui: ./include (fixed version)"
+    '';
     
-    # Creează template dacă nu există fișiere sursă
-    if [ ! -f "src/main.c" ] && [ ! -f "src/main.cpp" ]; then
-      make template
-    fi
-    
-    echo -e "✅ ${GREEN}Setup complet!${NC}"
-    echo -e "📝 Comenzi disponibile:"
-    echo -e "  ${BLUE}make debug${NC}   - Build debug"
-    echo -e "  ${BLUE}make release${NC} - Build release" 
-    echo -e "  ${BLUE}make run${NC}     - Build și run"
-    echo -e "  ${BLUE}make clean${NC}   - Șterge build files"
-    echo -e "  ${BLUE}code .${NC}       - Deschide VSCode"
-    echo ""
-    echo -e "🔗 Include paths configurate:"
-    echo -e "  Raylib: $RAYLIB_PATH/include"
-    echo -e "  Raygui: ./include (fixed version)"
-  '';
-  
-  # Variabile de environment permanente
-  shellAttributes = {
-    CC = "gcc";
-    CXX = "g++";
+    # Variabile de environment permanente
+    shellAttributes = {
+      CC = "gcc";
+      CXX = "g++";
+    };
   };
 }
+
