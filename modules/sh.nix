@@ -33,10 +33,6 @@ fi'';
     };
 in
 {
-programs.bash = {
- enable = false;
- shellAliases = alias;
-};
 programs.zsh = {
 enable = true;
 
