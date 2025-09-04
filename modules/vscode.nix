@@ -5,7 +5,6 @@
   programs.vscode = {
     enable = true;
     package = [ pkgs.vscode pkgs.vscodium ];
-    defaultEditor = true;
 
     # Limbaje
     haskell.enable = true;
