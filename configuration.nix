@@ -129,13 +129,12 @@
      gcc
      jdk
      raygui
-     libGL
-      libGLU
     xorg.libX11
+    xorg.libGL
+    xorg.libXcursor
     xorg.libXrandr
     xorg.libXi
-    xorg.libXcursor
-    xorg.libXinerama
+    gcc
     pkg-config
   ];
    #Hyprland
