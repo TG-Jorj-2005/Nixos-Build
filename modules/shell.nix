@@ -1,8 +1,5 @@
 {config,pkgs,lib, ...}:
-let
-  # Importă nixpkgs într-un mod compatibil
-  pkgs = import <nixpkgs> { };
-in
+{
 pkgs.mkShell {
   name = "raylib-dev-env";
   
