@@ -9,7 +9,8 @@
 	      ./assets/neovim.nix
 	      ./modules/rofi.nix
 	      ./modules/alacritty.nix
-	      ./modules/rust.nix   
+	      ./modules/rust.nix  
+        ./modules/shell.nix 
 		       ];
 
 
