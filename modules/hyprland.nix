@@ -24,7 +24,7 @@ home.packages = with pkgs;[
  waybar
  btop
  alacritty
- river
+ river-classic
 
 ];
 wayland = {
