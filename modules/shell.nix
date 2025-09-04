@@ -1,6 +1,5 @@
 {config, lib, pkgs, ... }:
-{
-  pkgs.mkShell = {
+{   mkShell = {
     buildInputs = with pkgs; [
       # C/C++ development
       gcc
