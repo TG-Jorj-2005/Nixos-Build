@@ -135,10 +135,9 @@
   ];
 
   #OpenGL activat
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true; # pentru aplicații 32-bit
+    enable32Bit = true; # pentru aplicații 32-bit
   };
    #Hyprland
    programs.hyprland = {
