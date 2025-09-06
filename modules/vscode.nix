@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     vscode
-    gcc gdb cmake make pkg-config
+    gcc gdb cmake pkg-config
     raylib SDL2 boost opencv
     nixpkgs-fmt nixd
   ];
