@@ -124,26 +124,7 @@
      neovim
      dunst
      zathura
-     raylib
-    raygui
-    gcc
-    cmake
-    pkg-config
-    gdb
-    valgrind
-  ];
-   #PKG_CONFIG_PATH corect
-  environment.sessionVariables = {
-    PKG_CONFIG_PATH = [
-      "/run/current-system/sw/lib/pkgconfig"
-      "\${PKG_CONFIG_PATH}"
-    ];
-  };
-  #OpenGL activat
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true; # pentru aplicații 32-bit
-  };
+   ];
    #Hyprland
    programs.hyprland = {
      enable = true;
