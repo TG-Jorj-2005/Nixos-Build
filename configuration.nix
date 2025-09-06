@@ -132,11 +132,13 @@
     gdb
     valgrind
   ];
-    #Var
-    environment.variables = {
-    PKG_CONFIG_PATH = "${pkgs.raylib}/lib/pkgconfig:$PKG_CONFIG_PATH";
-            };
-
+   #PKG_CONFIG_PATH corect
+  environment.sessionVariables = {
+    PKG_CONFIG_PATH = [
+      "/run/current-system/sw/lib/pkgconfig"
+      "\${PKG_CONFIG_PATH}"
+    ];
+  };
   #OpenGL activat
   hardware.graphics = {
     enable = true;
