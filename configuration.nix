@@ -132,6 +132,8 @@
      mpc
      isl
      flex
+     raylib
+     raygui
      bison
      texinfo
   ];
