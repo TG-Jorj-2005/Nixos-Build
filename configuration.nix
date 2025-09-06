@@ -134,6 +134,7 @@
      flex
      raylib
      raygui
+     libGL
      bison
      texinfo
   ];
