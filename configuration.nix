@@ -125,19 +125,8 @@
      dunst
      zathura
      pkg-config
-     gnumake
-     binutils
-     gmp
-     mpfr
-     mpc
-     isl
-     flex
-     raylib
-     raygui
-     libGL
-     bison
-     texinfo
-  ];
+    
+    ];
    #Hyprland
    programs.hyprland = {
      enable = true;
