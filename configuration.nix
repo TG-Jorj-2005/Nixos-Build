@@ -124,9 +124,7 @@
      neovim
      dunst
      zathura
-     nixd  
    ];
-   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
    #Hyprland
    programs.hyprland = {
      enable = true;
