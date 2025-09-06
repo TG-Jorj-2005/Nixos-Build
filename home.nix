@@ -10,6 +10,7 @@
 	      ./modules/rofi.nix
 	      ./modules/alacritty.nix
 	      ./modules/rust.nix 
+        ./modules/vscode.nix
 		       ];
 
 
