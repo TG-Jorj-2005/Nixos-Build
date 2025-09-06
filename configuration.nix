@@ -125,8 +125,21 @@
      dunst
      zathura
      pkg-config
-    
-    ];
+     raylib
+    raygui
+    gcc
+    cmake
+    pkg-config
+    gdb
+    valgrind
+  ];
+
+  #OpenGL activat
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true; # pentru aplicații 32-bit
+  };
    #Hyprland
    programs.hyprland = {
      enable = true;
