@@ -124,7 +124,6 @@
      neovim
      dunst
      zathura
-     pkg-config
      raylib
     raygui
     gcc
@@ -133,6 +132,10 @@
     gdb
     valgrind
   ];
+    #Var
+    environment.variables = {
+    PKG_CONFIG_PATH = "${pkgs.raylib}/lib/pkgconfig:$PKG_CONFIG_PATH";
+            };
 
   #OpenGL activat
   hardware.graphics = {
