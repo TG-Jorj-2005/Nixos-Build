@@ -22,8 +22,8 @@
     userSettings = {
       "editor.formatOnSave" = true;
       "files.autoSave" = "afterDelay";
-      "C_Cpp.default.cppStandard" = "c++20";
-      "C_Cpp.default.cStandard" = "c17";
+      "C_Cpp.default.cppStandard" = "c++26";
+      "C_Cpp.default.cStandard" = "c23";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";
       "nix.formatterPath" = "nixpkgs-fmt";
