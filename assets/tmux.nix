@@ -34,10 +34,6 @@
 
     };
 
-  home.packages = with pkgs; [
-    nvim-edit
-    setup-lazyvim
-  ];
 
 
   }
