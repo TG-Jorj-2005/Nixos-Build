@@ -124,6 +124,9 @@
      neovim
      dunst
      zathura
+     nodejs
+    npm
+    python3
    ];
    #Hyprland
    programs.hyprland = {
@@ -180,20 +183,20 @@
     services.blueman.enable = true;
     hardware.bluetooth.powerOnBoot = true;
     hardware.bluetooth.package = pkgs.bluez;
-   #Ollama
-    services.ollama = {
-              enable = true;
-              acceleration = "cuda"; # sau "rocm" / "none"
-            };
+   #Claude
+   systemd.services."claude-code-install" = {
+    description = "Install Claude Code CLI";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.writeShellScript "install-claude-code" ''
+        ${pkgs.npm}/bin/npm install -g @anthropic-ai/claude-code
+      ''}";
+      Type = "oneshot";
+      RemainAfterExit = true;
+      User = "root";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
 
-            systemd.services."ollama-pull-dolphin" = {
-              description = "Pull Dolphin Mistral model";
-              after = [ "ollama.service" ];
-              wants = [ "ollama.service" ];
-              serviceConfig = {
-                ExecStart = "${pkgs.ollama}/bin/ollama pull dolphin-mistral:latest";
-                User = "jorj";
-              };
-              wantedBy = [ "multi-user.target" ];
-            };
 }
