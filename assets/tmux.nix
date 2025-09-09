@@ -9,42 +9,39 @@
     terminal = "screen-256color";
     
     extraConfig = ''
-      # Tema închisă ca în primul screenshot
-      set -g status-bg colour235
-      set -g status-fg colour250
+        # Configurare exactă pentru prima poză
+      set -g default-terminal "screen-256color"
       set -g status-position top
+      set -g status-style "bg=#1e1e1e,fg=#ffffff"
       
-      set -g status-left-length 20
+      # Format statusbar exact ca în prima poză
+      set -g status-left-length 100
       set -g status-right-length 50
-      set -g status-left "#[fg=colour39]#I #[fg=colour250]#(echo $USER)#[fg=colour39]:#[fg=colour250]#h#[fg=colour39]*"
-      set -g status-right "#[fg=colour39]#h #[fg=colour46]#(echo $USER) #[fg=colour250]#[fg=colour39]0"
+      set -g status-left "#[fg=#40E0D0]0 #[fg=#ffffff]typecraft #[fg=#40E0D0]typecraft #[fg=#888888]/bin/rails test test/controllers/tasks_controller_test.rb"
+      set -g status-right "#[fg=#1eff00]zsh #[fg=#40E0D0]0"
       
-      set -g window-status-current-format "#[fg=colour39]#I #[fg=colour250]#W#[fg=colour39]*"
-      set -g window-status-format "#[fg=colour245]#I #[fg=colour245]#W"
+      # Elimină separatoarele și formatarea pentru window-uri
+      set -g window-status-current-format ""
+      set -g window-status-format ""
       set -g window-status-separator ""
       
-      set -g window-status-current-style "fg=colour39,bg=colour235"
-      set -g window-status-style "fg=colour245,bg=colour235"
+      # Ascunde numărul de window în status
+      set -g status-left-length 200
       
-      set -g pane-border-style "fg=colour240"
-      set -g pane-active-border-style "fg=colour39"
+      # Pane borders ca în poză
+      set -g pane-border-style "fg=#333333"
+      set -g pane-active-border-style "fg=#40E0D0"
       
+      # Key bindings
       bind | split-window -h
       bind - split-window -v
-      unbind '"'
-      unbind %
-      
       bind h select-pane -L
-      bind j select-pane -D
+      bind j select-pane -D  
       bind k select-pane -U
       bind l select-pane -R
       
-      bind H resize-pane -L 5
-      bind J resize-pane -D 5
-      bind K resize-pane -U 5
-      bind L resize-pane -R 5
-      
-      bind r source-file ~/.tmux.conf \; display "Config reloaded!"
+      # Reload config
+      bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
     '';
     };
 
