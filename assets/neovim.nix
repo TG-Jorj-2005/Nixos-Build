@@ -159,11 +159,6 @@ let
         fi
     fi
 
-    #Lansare tmux
-    if command -v tmux >/dev/null && [ -z "$TMUX" ]; then
-    tmux new-session "$0" "$@" 
-    exit
-    fi
     
     # Lansează editorul
     if [ "$USE_SUDO" = true ]; then
@@ -189,8 +184,7 @@ let
         echo "📦 Creez backup..."
         mv "$NVIM_CONFIG" "''${NVIM_CONFIG}.backup.$(date +%Y%m%d_%H%M%S)"
     fi
-    
-    if [ -d "$NVIM_DATA" ]; then
+        if [ -d "$NVIM_DATA" ]; then
         mv "$NVIM_DATA" "''${NVIM_DATA}.backup.$(date +%Y%m%d_%H%M%S)"
     fi
     
