@@ -46,15 +46,6 @@
       
       bind r source-file ~/.tmux.conf \; display "Config reloaded!"
     '';
-  };
-
-
-# Pentru o temă și mai apropiată de cea din imagine, poți adăuga:
- environment.systemPackages = with pkgs; [
-   tmuxPlugins.catppuccin
- ];
-
-# Și în extraConfig:
- run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux}
+    };
 
  }
