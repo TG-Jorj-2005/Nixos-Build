@@ -9,40 +9,40 @@
     terminal = "screen-256color";
     
     extraConfig = ''
-        # Configurare exactă pentru prima poză
-      set -g default-terminal "screen-256color"
-      set -g status-position top
-      set -g status-style "bg=#1e1e1e,fg=#ffffff"
-      
-      # Format statusbar exact ca în prima poză
-      set -g status-left-length 100
-      set -g status-right-length 50
-      set -g status-left "#[fg=#40E0D0]0 #[fg=#ffffff]typecraft #[fg=#40E0D0]typecraft #[fg=#888888]/bin/rails test test/controllers/tasks_controller_test.rb"
-      set -g status-right "#[fg=#1eff00]zsh #[fg=#40E0D0]0"
-      
-      # Elimină separatoarele și formatarea pentru window-uri
-      set -g window-status-current-format ""
-      set -g window-status-format ""
-      set -g window-status-separator ""
-      
-      # Ascunde numărul de window în status
-      set -g status-left-length 200
-      
-      # Pane borders ca în poză
-      set -g pane-border-style "fg=#333333"
-      set -g pane-active-border-style "fg=#40E0D0"
-      
-      # Key bindings
-      bind | split-window -h
-      bind - split-window -v
-      bind h select-pane -L
-      bind j select-pane -D  
-      bind k select-pane -U
-      bind l select-pane -R
-      
-      # Reload config
-      bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
-    '';
+      unbind r
+ bind r source-file ~/.tmux.conf
+
+set -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",xterm-256color:RGB"
+
+set -g prefix C-s
+
+set -g mouse on
+
+set-window-option -g mode-keys vi
+
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
+set-option -g status-position top
+
+# set -g @catppuccin_flavor "mocha"
+set -g @catppuccin_window_status_style "rounded"
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'catppuccin/tmux#v2.1.0'
+
+set -g status-left ""
+set -g status-right "#{E:@catppuccin_status_application} #{E:@catppuccin_status_session}"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
+set -g status-style bg=default    '';
     };
 
  }
