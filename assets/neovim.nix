@@ -177,7 +177,7 @@ let
 
   # Script pentru configurarea rapidă LazyVim
   setup-lazyvim = pkgs.writeShellScriptBin "setup-lazyvim" ''
-    #!/usr/bin/env bash
+    #!/usr/bin/env zsh
     
     NVIM_CONFIG="$HOME/.config/nvim"
     NVIM_DATA="$HOME/.local/share/nvim"
