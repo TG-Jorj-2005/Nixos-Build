@@ -284,6 +284,7 @@ EOF
   '';
 
 in {
+  programs.zsh.enable = true;
   # Programul principal Neovim
   programs.neovim = {
     enable = true;
