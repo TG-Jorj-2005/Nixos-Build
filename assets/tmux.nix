@@ -12,24 +12,38 @@
     set -g status-fg white
     set -g status-interval 5
     set -g status-left-length 40
-    set -g status-left "#[fg=green]#S #[fg=yellow]#(whoami)"
-    set -g status-right "#[fg=cyan]%Y-%m-%d #[fg=white]%H:%M"
+    sset -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",xterm-256color:RGB"
 
-    # Split pane bindings (vertical/horizontal)
-    bind | split-window -h
-    bind - split-window -v
-    unbind '"'
-    unbind %
+set -g prefix C-s
 
-    # Navigare între pane-uri cu Ctrl-h/j/k/l
-    bind -n C-h select-pane -L
-    bind -n C-j select-pane -D
-    bind -n C-k select-pane -U
-    bind -n C-l select-pane -R
+set -g mouse on
 
-    # Copiere rapidă în clipboard (X11)
-    bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -in -selection clipboard"
-  '';
+set-window-option -g mode-keys vi
+
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
+set-option -g status-position top
+
+# set -g @catppuccin_flavor "mocha"
+set -g @catppuccin_window_status_style "rounded"
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'catppuccin/tmux#v2.1.0'
+
+set -g status-left ""
+set -g status-right "#{E:@catppuccin_status_application} #{E:@catppuccin_status_session}"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
+set -g status-style bg=default
+'';
 
 
     };
