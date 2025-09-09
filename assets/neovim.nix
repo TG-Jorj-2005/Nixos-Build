@@ -158,6 +158,12 @@ let
             USE_SUDO=true
         fi
     fi
+
+    #Lansare tmux
+    if command -v tmux >/dev/null && [ -z "$TMUX" ]; then
+    tmux new-session "$0" "$@" 
+    exit
+    fi
     
     # Lansează editorul
     if [ "$USE_SUDO" = true ]; then
@@ -311,6 +317,7 @@ in {
   home.packages = [
     nvim-edit
     setup-lazyvim
+    tmux
   ];
 
   # Aliasuri convenabile
