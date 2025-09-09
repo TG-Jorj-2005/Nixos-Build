@@ -38,7 +38,12 @@ let
         echo "  nvim-edit -f ~/.config/test      # forțează sudo"
         echo "  nvim-edit -c /etc/new-config     # creează cu sudo"
     }
-    
+   
+    # Lansare automată tmux dacă nu e deja activ
+    if command -v tmux >/dev/null && [ -z "$TMUX" ]; then
+    exec tmux
+    fi 
+
     # Detectează dacă fișierul necesită root
     needs_root() {
         local file="$1"
