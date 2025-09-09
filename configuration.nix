@@ -125,7 +125,6 @@
      dunst
      zathura
      nodejs
-    npm
     python3
    ];
    #Hyprland
@@ -183,20 +182,4 @@
     services.blueman.enable = true;
     hardware.bluetooth.powerOnBoot = true;
     hardware.bluetooth.package = pkgs.bluez;
-   #Claude
-   systemd.services."claude-code-install" = {
-    description = "Install Claude Code CLI";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.writeShellScript "install-claude-code" ''
-        ${pkgs.npm}/bin/npm install -g @anthropic-ai/claude-code
-      ''}";
-      Type = "oneshot";
-      RemainAfterExit = true;
-      User = "root";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
-
-}
+   }
