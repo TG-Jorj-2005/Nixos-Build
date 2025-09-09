@@ -317,7 +317,7 @@ in {
   home.packages = [
     nvim-edit
     setup-lazyvim
-    tmux
+    pkgs.tmux
   ];
 
   # Aliasuri convenabile
