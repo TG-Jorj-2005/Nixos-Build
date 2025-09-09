@@ -6,6 +6,7 @@
     clock24 = true;
     keyMode = "vi";
     mouse = true;
+     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "screen-256color";
      plugins = with pkgs.tmuxPlugins; [
     vim-tmux-navigator
@@ -13,7 +14,6 @@
   ]; 
     extraConfig = ''
     # configurația ta aici, dar fără secțiunea de plugin-uri
-    set-option -g default-shell $(which zsh)
     unbind r
     bind r source-file ~/.tmux.conf
     set -g default-terminal "tmux-256color"
