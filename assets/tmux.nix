@@ -1,7 +1,7 @@
 {config, libs, pkgs, ...}:
 {
 
-programs.tmux = {
+ programs.tmux = {
     enable = true;
     clock24 = true;
     keyMode = "vi";
@@ -9,20 +9,24 @@ programs.tmux = {
     terminal = "screen-256color";
     
     extraConfig = ''
-      # Aceleași configurări ca mai sus
-      set -g status-bg black
-      set -g status-fg white
+      # Tema închisă ca în primul screenshot
+      set -g status-bg colour235
+      set -g status-fg colour250
       set -g status-position top
       
-      set -g status-left-length 40
-      set -g status-right-length 80
-      set -g status-left "#[fg=green]#S #[fg=yellow]#I #[fg=cyan]#P"
-      set -g status-right "#[fg=cyan]%d %b %R"
+      set -g status-left-length 20
+      set -g status-right-length 50
+      set -g status-left "#[fg=colour39]#I #[fg=colour250]#(echo $USER)#[fg=colour39]:#[fg=colour250]#h#[fg=colour39]*"
+      set -g status-right "#[fg=colour39]#h #[fg=colour46]#(echo $USER) #[fg=colour250]#[fg=colour39]0"
       
-      set -g window-status-current-style "fg=black,bg=white"
-      set -g window-status-style "fg=white,bg=black"
+      set -g window-status-current-format "#[fg=colour39]#I #[fg=colour250]#W#[fg=colour39]*"
+      set -g window-status-format "#[fg=colour245]#I #[fg=colour245]#W"
+      set -g window-status-separator ""
       
-      set -g pane-border-style "fg=colour238"
+      set -g window-status-current-style "fg=colour39,bg=colour235"
+      set -g window-status-style "fg=colour245,bg=colour235"
+      
+      set -g pane-border-style "fg=colour240"
       set -g pane-active-border-style "fg=colour39"
       
       bind | split-window -h
@@ -43,4 +47,14 @@ programs.tmux = {
       bind r source-file ~/.tmux.conf \; display "Config reloaded!"
     '';
   };
-}
+
+
+# Pentru o temă și mai apropiată de cea din imagine, poți adăuga:
+ environment.systemPackages = with pkgs; [
+   tmuxPlugins.catppuccin
+ ];
+
+# Și în extraConfig:
+ run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux}
+
+ }
