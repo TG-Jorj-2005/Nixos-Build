@@ -3,7 +3,7 @@
 let
   # Script pentru editare inteligentă
   nvim-edit = pkgs.writeShellScriptBin "nvim-edit" ''
-    #!/usr/bin/env bash
+    #!/usr/bin/env zsh
     
     # Culori pentru output
     RED='\033[0;31m'
@@ -319,14 +319,7 @@ in {
     pkgs.tmux
   ];
 
-  # Aliasuri convenabile
-  programs.bash.shellAliases = {
-    vi = "nvim-edit";
-    vim = "nvim-edit";
-    nvim = "nvim-edit";
-    snvim = "nvim-edit --force-sudo";
-    edit = "nvim-edit";
-  };
+ 
 
   programs.zsh.shellAliases = {
     vi = "nvim-edit";
