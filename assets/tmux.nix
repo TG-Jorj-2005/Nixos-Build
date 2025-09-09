@@ -7,7 +7,10 @@
     keyMode = "vi";
     mouse = true;
     terminal = "screen-256color";
-    
+     plugins = with pkgs.tmuxPlugins; [
+    vim-tmux-navigator
+    catppuccin
+  ]; 
     extraConfig = ''
       unbind r
  bind r source-file ~/.tmux.conf
