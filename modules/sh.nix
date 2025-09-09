@@ -48,6 +48,13 @@ initContent = ''
     if [[ $- == *i* ]]; then
       nitch
     fi
+    
+    # Restart tmux pentru a aplica configurația
+   if command -v tmux &> /dev/null; then
+    if ! tmux has-session 2>/dev/null; then
+        tmux kill-server 2>/dev/null || true
+    fi
+   fi
 
     export EDITOR="code"
     export TERMINAL="alacritty"
