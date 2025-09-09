@@ -1,53 +1,46 @@
 {config, libs, pkgs, ...}:
 {
-  programs.tmux = {
-      enable = true;
-      shell = "${pkgs.zsh}/bin/zsh";
-      clock24 = true;
-      mouse = true;
-      keyMode = "vi";
-      extraConfig = ''
-        set -g history-limit 10000
-    set -g status-bg colour235
-    set -g status-fg white
-    set -g status-interval 5
-    set -g status-left-length 40
-    sset -g default-terminal "tmux-256color"
-set -ag terminal-overrides ",xterm-256color:RGB"
 
-set -g prefix C-s
-
-set -g mouse on
-
-set-window-option -g mode-keys vi
-
-bind-key h select-pane -L
-bind-key j select-pane -D
-bind-key k select-pane -U
-bind-key l select-pane -R
-
-set-option -g status-position top
-
-# set -g @catppuccin_flavor "mocha"
-set -g @catppuccin_window_status_style "rounded"
-
-# List of plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'christoomey/vim-tmux-navigator'
-set -g @plugin 'catppuccin/tmux#v2.1.0'
-
-set -g status-left ""
-set -g status-right "#{E:@catppuccin_status_application} #{E:@catppuccin_status_session}"
-
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '~/.tmux/plugins/tpm/tpm'
-
-set -g status-style bg=default
-'';
-
-
-    };
-
-
-
-  }
+programs.tmux = {
+    enable = true;
+    clock24 = true;
+    keyMode = "vi";
+    mouse = true;
+    terminal = "screen-256color";
+    
+    extraConfig = ''
+      # Aceleași configurări ca mai sus
+      set -g status-bg black
+      set -g status-fg white
+      set -g status-position top
+      
+      set -g status-left-length 40
+      set -g status-right-length 80
+      set -g status-left "#[fg=green]#S #[fg=yellow]#I #[fg=cyan]#P"
+      set -g status-right "#[fg=cyan]%d %b %R"
+      
+      set -g window-status-current-style "fg=black,bg=white"
+      set -g window-status-style "fg=white,bg=black"
+      
+      set -g pane-border-style "fg=colour238"
+      set -g pane-active-border-style "fg=colour39"
+      
+      bind | split-window -h
+      bind - split-window -v
+      unbind '"'
+      unbind %
+      
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
+      
+      bind H resize-pane -L 5
+      bind J resize-pane -D 5
+      bind K resize-pane -U 5
+      bind L resize-pane -R 5
+      
+      bind r source-file ~/.tmux.conf \; display "Config reloaded!"
+    '';
+  };
+}
