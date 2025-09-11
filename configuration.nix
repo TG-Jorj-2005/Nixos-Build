@@ -127,7 +127,6 @@
      nodejs
     python3
     nautilus
-    dolphin
  ];
    #Hyprland
    programs.hyprland = {
