@@ -320,15 +320,6 @@ in {
     pkgs.tmux
   ];
 
-  # Aliasuri convenabile
-  programs.bash.shellAliases = {
-    vi = "nvim-edit";
-    vim = "nvim-edit";
-    nvim = "nvim-edit";
-    snvim = "nvim-edit --force-sudo";
-    edit = "nvim-edit";
-  };
-
   programs.zsh.shellAliases = {
     vi = "nvim-edit";
     vim = "nvim-edit";
